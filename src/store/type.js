@@ -14,6 +14,14 @@ export const RECENT_TOPICS = 'RECENT_TOPICS'
 export const RECENT_REPLIES = 'RECENT_REPLIES'
 export const TOPIC_COLLECT = 'TOPIC_COLLECT'
 
+// messages
+export const GET_MESSAGE_COUNT = 'GET_MESSAGE_COUNT'
+export const FETCH_MESSAGESDATA = 'FETCH_MESSAGESDATA'
+export const CLEAR_MESSAGESDATA = 'CLEAR_MESSAGESDATA'
+// messages getters
+export const HAS_READ_MESSAGES = 'HAS_READ_MESSAGES'
+export const HASNOT_READ_MESSAGES = 'HASNOT_READ_MESSAGES'
+
 // login
 export const LOGIN = 'LOGIN'
 export const LOGINOUT = 'LOGINOUT'

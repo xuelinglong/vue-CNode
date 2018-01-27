@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 import common from './common'
 import topics from './topics'
 import user from './user'
+import messages from './messages'
 import login from './login'
 
 Vue.use(Vuex)
@@ -13,6 +14,7 @@ export default new Vuex.Store({
     common,
     topics,
     user,
+    messages,
     login
   }
 })

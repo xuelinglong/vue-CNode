@@ -34,6 +34,7 @@ const actions = {
   [type.LOGINOUT] (context) {
     context.commit(type.LOGINOUT)
     context.commit(type.CLEAR_USERDATA)
+    context.commit(type.CLEAR_MESSAGESDATA)
   }
 }
 
