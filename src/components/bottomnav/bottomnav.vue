@@ -37,6 +37,6 @@ export default {
   bottom 0
   left 0
   color #ffffff
-  z-index 10
+  z-index 9
 }
 </style>

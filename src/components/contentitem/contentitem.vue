@@ -16,9 +16,9 @@
         <span class="author-name">{{ topic.author.loginname }}</span>
       </div>
       <div class="icon-right">
-        <mu-icon value="home" :size="20"/>
+        <mu-icon value="visibility" :size="15" color="#D3DCE6"/>
         <span class="visit-count">{{ topic.visit_count }}</span>
-        <mu-icon value="home" :size="20"/>
+        <mu-icon value="textsms" :size="15" color="#D3DCE6"/>
         <span class="reply-count">{{ topic.reply_count }}</span>
       </div>
     </div>
@@ -95,7 +95,7 @@ export default {
 .icon-left {
   flex 1
   text-align left
-  padding-left 10px
+  padding-left 3%
   width 50%
   box-sizing border-box
 }

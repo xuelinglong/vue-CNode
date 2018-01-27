@@ -118,6 +118,7 @@ export default {
 
 .tab {
   width 100%
+  z-index 9
 }
 
 .contentlist {
