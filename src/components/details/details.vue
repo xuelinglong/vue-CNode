@@ -3,8 +3,9 @@
     <mu-appbar title="话题正文">
       <mu-icon-button icon="arrow_back" slot="left" @click="back" />
       <mu-icon-button icon="chat" slot="right"></mu-icon-button>
-      <mu-icon-button v-show="!login.success" icon="star" slot="right" iconClass="collect"></mu-icon-button>
-      <mu-icon-button v-show="login.success" icon="star" slot="right" iconClass="collected" style="color: yellow"></mu-icon-button>
+      <span class="replies-count" slot="right" v-show="REPLIES_COUNT > 0">{{ REPLIES_COUNT }}</span>
+      <mu-icon-button v-show="!info.detailsData.is_collect" @click="handelCollect" icon="star" slot="right" iconClass="collect"></mu-icon-button>
+      <mu-icon-button v-show="info.detailsData.is_collect" @click="handelCollect" icon="star" slot="right" iconClass="collected" style="color: yellow"></mu-icon-button>
     </mu-appbar>
 
     <div class="content-details">
@@ -21,7 +22,7 @@
 
 <script>
 import * as type from './../../store/type'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import router from './../../router/index'
 // import Contentitem from './../../../components/contentitem/contentitem'
 export default {
@@ -38,6 +39,9 @@ export default {
     ...mapState([
       'login',
       'info'
+    ]),
+    ...mapGetters([
+      'REPLIES_COUNT'
     ])
   },
   created () {
@@ -56,6 +60,23 @@ export default {
     back () {
       router.go(-1)
       this.$store.dispatch(type.CLEAR_TOPIC_DETAILS)
+    },
+    handelCollect () {
+      if (this.login.loginData.success) {
+        if (this.info.detailsData.is_collect) {
+          this.$store.dispatch(type.DEL_COLLECTED, {
+            accesstoken: this.accesstoken,
+            topic_id: this.$route.params.id,
+            loginname: this.login.loginData.loginname
+          })
+        } else {
+          this.$store.dispatch(type.COLLECT, {
+            accesstoken: this.accesstoken,
+            topic_id: this.$route.params.id,
+            loginname: this.login.loginData.loginname
+          })
+        }
+      }
     }
   }
 }
@@ -80,6 +101,16 @@ export default {
   position fixed
   top 0
   left 0
+}
+
+.replies-count {
+  width 30px
+  height 30px
+  position relative
+  right 20px
+  bottom 10px
+  border-radius 100%
+  background #e91e63
 }
 
 .content-details {
