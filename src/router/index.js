@@ -5,6 +5,7 @@ import message from '@/view/message/message'
 import push from '@/view/push/push'
 import user from '@/view/user/user'
 import usertopics from '@/view/user/usertopics/usertopics'
+import details from '@/components/details/details'
 
 Vue.use(Router)
 
@@ -34,9 +35,14 @@ const router = new Router({
       component: user
     },
     {
-      path: 'usertopics/:type',
+      path: '/usertopics/:type',
       name: 'usertopics',
       component: usertopics
+    },
+    {
+      path: '/details/:id',
+      name: 'details',
+      component: details
     }
   ]
 })

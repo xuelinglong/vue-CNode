@@ -15,17 +15,17 @@
       </div>
 
       <mu-list>
-        <mu-list-item title="我收藏的话题" :to="{name: 'usertopics', params: {type: 'topic_collect', title: '我收藏的话题'}}" titleClass="left">
+        <mu-list-item title="我收藏的话题" :to="{name: 'usertopics', params: {type: 'topic_collect'}}" titleClass="left">
           <mu-icon slot="left" value="star" style="color: #ffd600"/>
           <span class="count" slot="right">{{ TOPIC_COLLECT }}</span>
           <mu-icon slot="right" value="chevron_right"/>
         </mu-list-item>
-        <mu-list-item title="我参与的话题" :to="{name: 'usertopics', params: {type: 'recent_replies', title: '我参与的话题'}}">
+        <mu-list-item title="我参与的话题" :to="{name: 'usertopics', params: {type: 'recent_replies'}}">
           <mu-icon slot="left" value="chat" style="color: #00b1fe"/>
           <span class="count" slot="right">{{ RECENT_REPLIES }}</span>
           <mu-icon slot="right" value="chevron_right"/>
         </mu-list-item>
-        <mu-list-item title="我最近的话题" :to="{name: 'usertopics', params: {type: 'recent_topics', title: '我最近的话题'}}">
+        <mu-list-item title="我最近的话题" :to="{name: 'usertopics', params: {type: 'recent_topics'}}">
           <mu-icon slot="left" value="bubble_chart" style="color: #e91e63"/>
           <span class="count" slot="right">{{ RECENT_TOPICS }}</span>
           <mu-icon slot="right" value="chevron_right"/>

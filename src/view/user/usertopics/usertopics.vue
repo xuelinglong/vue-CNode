@@ -1,6 +1,6 @@
 <template>
   <div class="usertopics">
-    <mu-appbar :title="this.$route.params.title + ' (' + this.length + ')'">
+    <mu-appbar :title="this.title + ' (' + this.length + ')'">
       <mu-icon-button icon="close" @click="back" slot="left"/>
     </mu-appbar>
 
@@ -19,6 +19,7 @@ export default {
   data () {
     return {
       lists: [],
+      title: '',
       length: 0
     }
   },
@@ -40,21 +41,24 @@ export default {
     switch (type) {
       case 'topic_collect':
         this.lists = this.user.topic_collect.data
+        this.title = '我收藏的话题'
         this.length = this.TOPIC_COLLECT
         break
       case 'recent_topics':
         this.lists = this.user.userData.data.recent_topics
+        this.title = '我最近的话题'
         this.length = this.RECENT_TOPICS
         break
       case 'recent_replies':
         this.lists = this.user.userData.data.recent_replies
+        this.title = '我参与的话题'
         this.length = this.RECENT_REPLIES
         break
     }
   },
   methods: {
     back () {
-      router.back()
+      router.go(-1)
     }
   }
 }
@@ -69,7 +73,15 @@ export default {
   bottom 0
   left 0
   background #ffffff
-  z-index 10
+  z-index 3
+}
+
+.mu-appbar {
+  width 100%
+  height 56px
+  position fixed
+  top 0
+  left 0
 }
 
 .list {
@@ -79,6 +91,5 @@ export default {
   left 0
   bottom 0
   overflow-y auto
-  z-index 10
 }
 </style>

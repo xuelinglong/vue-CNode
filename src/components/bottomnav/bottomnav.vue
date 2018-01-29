@@ -1,5 +1,5 @@
 <template>
-  <mu-paper>
+  <mu-paper :zDepth="0">
     <mu-bottom-nav :value="common.bottomnav.active" @change="handleChange">
       <mu-bottom-nav-item value="topics" title="话题" to="/topics" icon="view_list"/>
       <mu-bottom-nav-item value="message" title="消息" to="/message" icon="note"/>
@@ -30,13 +30,12 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.mu-paper-1 {
+.mu-paper-0 {
   width 100%
   height 56px
   position fixed
   bottom 0
   left 0
   color #ffffff
-  z-index 9
 }
 </style>

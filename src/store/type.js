@@ -25,3 +25,7 @@ export const HASNOT_READ_MESSAGES = 'HASNOT_READ_MESSAGES'
 // login
 export const LOGIN = 'LOGIN'
 export const LOGINOUT = 'LOGINOUT'
+
+// info
+export const FETCH_TOPIC_DETAILS = 'FETCH_TOPIC_DETAILS'
+export const CLEAR_TOPIC_DETAILS = 'CLEAR_TOPIC_DETAILS'

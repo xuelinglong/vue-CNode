@@ -1,27 +1,29 @@
 <template>
   <div class="contentitem">
-    <div class="top-box">
-      <div class="author-img">
-        <img class="author" :src="topic.author.avatar_url" />
+    <router-link :to="{name: 'details', params: {id: topic.id}}">
+      <div class="top-box">
+        <div class="author-img">
+          <img class="author" :src="topic.author.avatar_url" />
+        </div>
+        <div class="title-box">
+          {{ topic.title }}
+        </div>
+        <div class="label-box">
+          <span class="label">{{ topic.tab }}</span>
+        </div>
       </div>
-      <div class="title-box">
-        {{ topic.title }}
+      <div class="icon-box">
+        <div class="icon-left">
+          <span class="author-name">{{ topic.author.loginname }}</span>
+        </div>
+        <div class="icon-right">
+          <mu-icon value="visibility" :size="15" color="#D3DCE6"/>
+          <span class="visit-count">{{ topic.visit_count }}</span>
+          <mu-icon value="textsms" :size="15" color="#D3DCE6"/>
+          <span class="reply-count">{{ topic.reply_count }}</span>
+        </div>
       </div>
-      <div class="label-box">
-        <span class="label">{{ topic.tab }}</span>
-      </div>
-    </div>
-    <div class="icon-box">
-      <div class="icon-left">
-        <span class="author-name">{{ topic.author.loginname }}</span>
-      </div>
-      <div class="icon-right">
-        <mu-icon value="visibility" :size="15" color="#D3DCE6"/>
-        <span class="visit-count">{{ topic.visit_count }}</span>
-        <mu-icon value="textsms" :size="15" color="#D3DCE6"/>
-        <span class="reply-count">{{ topic.reply_count }}</span>
-      </div>
-    </div>
+    </router-link>
   </div>
 </template>
 
@@ -89,6 +91,7 @@ export default {
   width 100%
   height 50px
   display flex
+  color #000000
   margin-top 10px
 }
 
