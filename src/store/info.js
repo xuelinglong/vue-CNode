@@ -17,10 +17,13 @@ const mutations = {
     state.detailsData = action.data
   },
   [type.COLLECT] (state, action) {
-    state.collected = action.data
+    state.collect = action.data
   },
   [type.DEL_COLLECTED] (state, action) {
-    state.del_collect = action.data
+    state.del_collected = action.data
+  },
+  [type.REPLY_UPS] (state, action) {
+    state.ups = action.data
   },
   [type.CLEAR_TOPIC_DETAILS] (state) {
     state.detailsData = {
@@ -42,6 +45,8 @@ const mutations = {
       replies: [],
       is_collect: false
     }
+    state.collect = false
+    state.del_collected = false
   }
 }
 
@@ -91,6 +96,19 @@ const actions = {
       })
     })
   },
+  [type.REPLY_UPS] (context, payload) {
+    axios.post('reply/' + payload.reply_id + '/ups', {
+      accesstoken: payload.accesstoken
+    }).then(res => {
+      context.commit(type.REPLY_UPS, {
+        data: res.data
+      })
+      context.dispatch(type.FETCH_TOPIC_DETAILS, {
+        accesstoken: payload.accesstoken,
+        id: payload.topic_id
+      })
+    })
+  },
   [type.CLEAR_TOPIC_DETAILS] (context) {
     context.commit(type.CLEAR_TOPIC_DETAILS)
   }
@@ -118,7 +136,8 @@ export default {
       is_collect: false
     },
     collect: false,
-    del_collected: false
+    del_collected: false,
+    ups: false
   },
   getters,
   mutations,

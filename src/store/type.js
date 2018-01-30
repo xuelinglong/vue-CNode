@@ -31,5 +31,6 @@ export const FETCH_TOPIC_DETAILS = 'FETCH_TOPIC_DETAILS'
 export const CLEAR_TOPIC_DETAILS = 'CLEAR_TOPIC_DETAILS'
 export const COLLECT = 'COLLECT'
 export const DEL_COLLECTED = 'DEL_COLLECTED'
+export const REPLY_UPS = 'REPLY_UPS'
 // info getters
 export const REPLIES_COUNT = 'REPLIES_COUNT'

@@ -123,6 +123,7 @@ export default {
 
 .mu-list {
   padding 15px 0
+  text-align left
 }
 
 .mu-item-wrapper {
@@ -133,11 +134,13 @@ export default {
 .mu-item-right {
   width 50px
 }
+
 .count {
   width 24px
   height 24px
   font-size 0.9rem
   color #ffffff
+  text-align center
   border-radius 100%
   background #e91e63
 }

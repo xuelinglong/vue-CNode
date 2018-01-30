@@ -2,7 +2,7 @@
   <div class="details">
     <mu-appbar title="话题正文">
       <mu-icon-button icon="arrow_back" slot="left" @click="back" />
-      <mu-icon-button icon="chat" slot="right"></mu-icon-button>
+      <mu-icon-button icon="chat" @click="gotoComments" slot="right"></mu-icon-button>
       <span class="replies-count" slot="right" v-show="REPLIES_COUNT > 0">{{ REPLIES_COUNT }}</span>
       <mu-icon-button v-show="!info.detailsData.is_collect" @click="handelCollect" icon="star" slot="right" iconClass="collect"></mu-icon-button>
       <mu-icon-button v-show="info.detailsData.is_collect" @click="handelCollect" icon="star" slot="right" iconClass="collected" style="color: yellow"></mu-icon-button>
@@ -77,6 +77,9 @@ export default {
           })
         }
       }
+    },
+    gotoComments () {
+      this.$router.push({name: 'comments'})
     }
   }
 }
@@ -109,6 +112,7 @@ export default {
   position relative
   right 20px
   bottom 10px
+  text-align center
   border-radius 100%
   background #e91e63
 }

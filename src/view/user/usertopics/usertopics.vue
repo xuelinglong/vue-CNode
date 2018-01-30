@@ -2,6 +2,8 @@
   <div class="usertopics">
     <mu-appbar :title="this.title + ' (' + this.length + ')'">
       <mu-icon-button icon="close" @click="back" slot="left"/>
+      <div slot="content">{{ this.title }}({{ this.length }})</div>
+      <mu-icon-button icon="" slot="right" />
     </mu-appbar>
 
     <div class="list">

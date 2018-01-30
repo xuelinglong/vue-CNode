@@ -6,6 +6,7 @@ import push from '@/view/push/push'
 import user from '@/view/user/user'
 import usertopics from '@/view/user/usertopics/usertopics'
 import details from '@/components/details/details'
+import comments from '@/components/comments/comments'
 
 Vue.use(Router)
 
@@ -43,6 +44,11 @@ const router = new Router({
       path: '/details/:id',
       name: 'details',
       component: details
+    },
+    {
+      path: 'comments',
+      name: 'comments',
+      component: comments
     }
   ]
 })
