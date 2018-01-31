@@ -5,6 +5,7 @@ import common from './common'
 import topics from './topics'
 import user from './user'
 import messages from './messages'
+import push from './push'
 import info from './info'
 import login from './login'
 
@@ -16,6 +17,7 @@ export default new Vuex.Store({
     topics,
     user,
     messages,
+    push,
     info,
     login
   }

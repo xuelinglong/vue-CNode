@@ -7,7 +7,7 @@
     </mu-appbar>
 
     <div class="list">
-      <v-contentitem v-for="topic in lists" :key="topic.id" :topic="topic"></v-contentitem>
+      <v-usertopicitem v-for="topic in lists" :key="topic.id" :topic="topic"></v-usertopicitem>
     </div>
   </div>
 </template>
@@ -15,7 +15,7 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import router from './../../../router/index'
-import Contentitem from './../../../components/contentitem/contentitem'
+import Usertopicitem from './../../../components/usertopicitem/usertopicitem'
 export default {
   name: 'Usertopics',
   data () {
@@ -26,7 +26,7 @@ export default {
     }
   },
   components: {
-    'v-contentitem': Contentitem
+    'v-usertopicitem': Usertopicitem
   },
   computed: {
     ...mapState([
@@ -47,12 +47,12 @@ export default {
         this.length = this.TOPIC_COLLECT
         break
       case 'recent_topics':
-        this.lists = this.user.userData.data.recent_topics
+        this.lists = this.user.userData.recent_topics
         this.title = '我最近的话题'
         this.length = this.RECENT_TOPICS
         break
       case 'recent_replies':
-        this.lists = this.user.userData.data.recent_replies
+        this.lists = this.user.userData.recent_replies
         this.title = '我参与的话题'
         this.length = this.RECENT_REPLIES
         break

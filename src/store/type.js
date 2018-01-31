@@ -22,6 +22,9 @@ export const CLEAR_MESSAGESDATA = 'CLEAR_MESSAGESDATA'
 export const HAS_READ_MESSAGES = 'HAS_READ_MESSAGES'
 export const HASNOT_READ_MESSAGES = 'HASNOT_READ_MESSAGES'
 
+// push
+export const PUSH_NEW_TOPIC = 'PUSH_NEW_TOPIC'
+
 // login
 export const LOGIN = 'LOGIN'
 export const LOGINOUT = 'LOGINOUT'

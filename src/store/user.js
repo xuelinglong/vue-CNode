@@ -57,7 +57,7 @@ const actions = {
       }
     }).then(res => {
       context.commit(type.FETCH_USERDATA, {
-        data: res.data
+        data: res.data.data
       })
     })
   },
