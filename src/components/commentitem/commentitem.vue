@@ -14,7 +14,7 @@
     <div class="content" v-html="comment.content"></div>
     <div class="icon-box">
       <div class="left">
-        <mu-icon-button icon="chat" :size="14" style="color: #aaaaaa"></mu-icon-button>
+        <mu-icon-button icon="comment" @click="replyToComment" :size="14" style="color: #aaaaaa"></mu-icon-button>
         <span class="text">回复</span>
       </div>
       <div class="right">
@@ -51,6 +51,14 @@ export default {
           accesstoken: this.accesstoken,
           reply_id: this.comment.id,
           topic_id: this.info.detailsData.id
+        })
+      }
+    },
+    replyToComment () {
+      if (this.login.loginData.success) {
+        this.$store.dispatch(type.SHOW_REPLIES_EDIT)
+        this.$store.dispatch(type.SAVE_REPLY_ID, {
+          reply_id: this.comment.id
         })
       }
     }

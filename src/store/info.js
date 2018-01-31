@@ -25,6 +25,18 @@ const mutations = {
   [type.REPLY_UPS] (state, action) {
     state.ups = action.data
   },
+  [type.SHOW_REPLIES_EDIT] (state) {
+    state.showreplies = !state.showreplies
+  },
+  [type.SAVE_REPLY_ID] (state, action) {
+    state.reply_toComment_id = action.data
+  },
+  [type.CLEAR_REPLY_ID] (state) {
+    state.reply_toComment_id = ''
+  },
+  [type.REPLY_PUSH] (state, action) {
+    state.replyedit = action.data
+  },
   [type.CLEAR_TOPIC_DETAILS] (state) {
     state.detailsData = {
       id: '',
@@ -101,12 +113,39 @@ const actions = {
       accesstoken: payload.accesstoken
     }).then(res => {
       context.commit(type.REPLY_UPS, {
+        data: res.data.success
+      })
+      context.dispatch(type.FETCH_TOPIC_DETAILS, {
+        accesstoken: payload.accesstoken,
+        id: payload.topic_id
+      })
+    })
+  },
+  [type.SHOW_REPLIES_EDIT] (context) {
+    context.commit(type.SHOW_REPLIES_EDIT)
+  },
+  [type.SAVE_REPLY_ID] (context, payload) {
+    context.commit(type.SAVE_REPLY_ID, {
+      data: payload.reply_id
+    })
+  },
+  [type.CLEAR_REPLY_ID] (context) {
+    context.commit(type.CLEAR_REPLY_ID)
+  },
+  [type.REPLY_PUSH] (context, payload) {
+    axios.post('topic/' + payload.topic_id + '/replies', {
+      accesstoken: payload.accesstoken,
+      content: payload.content,
+      reply_id: payload.reply_id
+    }).then(res => {
+      context.commit(type.REPLY_PUSH, {
         data: res.data
       })
       context.dispatch(type.FETCH_TOPIC_DETAILS, {
         accesstoken: payload.accesstoken,
         id: payload.topic_id
       })
+      context.commit(type.CLEAR_REPLY_ID)
     })
   },
   [type.CLEAR_TOPIC_DETAILS] (context) {
@@ -137,7 +176,13 @@ export default {
     },
     collect: false,
     del_collected: false,
-    ups: false
+    ups: false,
+    showreplies: false,
+    replyedit: {
+      success: '',
+      reply_id: ''
+    },
+    reply_toComment_id: ''
   },
   getters,
   mutations,
