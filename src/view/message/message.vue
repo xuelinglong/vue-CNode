@@ -1,6 +1,13 @@
 <template>
   <div class="message">
-    <div class="message-view">
+    <div class="message-login" v-if="!login.loginData.success">
+      <div class="main-image">
+        <img class="logo" src="./../../assets/logo.jpg" alt=""/>
+      </div>
+      <mu-raised-button label="去登录" :fullWidth="true" class="demo-raised-button" @click.native="goToLogin" primary/><br/>
+    </div>
+
+    <div class="message-view" v-if="login.loginData.success">
       <div class="title-text">未读消息({{ HASNOT_READ_MESSAGES }})</div>
       <div class="messagelist" v-if="HASNOT_READ_MESSAGES > 0">
         <v-messageitem v-for="message in messages.messageData.hasnot_read_messages" :key="message.reply.id" :message="message"></v-messageitem>
@@ -23,6 +30,7 @@
 <script>
 import * as type from './../../store/type'
 import { mapState, mapGetters } from 'vuex'
+import router from './../../router/index'
 import Messageitem from './../../components/messageitem/messageitem'
 export default {
   name: 'Message',
@@ -45,6 +53,14 @@ export default {
         accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c'
       })
     }
+  },
+  methods: {
+    goToLogin () {
+      router.push({name: 'user'})
+      this.$store.dispatch(type.HANDEL_CHANGE, {
+        active: 'user'
+      })
+    }
   }
 }
 </script>
@@ -56,7 +72,31 @@ export default {
   top 56px
   left 0
   bottom 56px
-  background #f0f0f0
+}
+
+.message-login {
+  width 100%
+  height 100%
+  padding 10% 0
+  box-sizing border-box
+}
+
+.main-image {
+  width 100%
+  height 30%
+  padding: 20px
+  box-sizing border-box
+}
+
+.logo {
+  width 300px
+  height 150px
+}
+
+.demo-raised-button {
+  width 80%
+  margin 30px 0 15px 0
+  font-size 1.1rem
 }
 
 .message-view {
@@ -66,6 +106,7 @@ export default {
   left 0
   bottom 56px
   overflow-y auto
+  background #f0f0f0
 }
 
 .title-text {

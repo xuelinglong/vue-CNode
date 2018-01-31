@@ -76,10 +76,15 @@ export default {
             loginname: this.login.loginData.loginname
           })
         }
+      } else {
+        router.push({name: 'user'})
+        this.$store.dispatch(type.HANDEL_CHANGE, {
+          active: 'user'
+        })
       }
     },
     gotoComments () {
-      this.$router.push({name: 'comments'})
+      router.push({name: 'comments'})
     }
   }
 }

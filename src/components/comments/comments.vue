@@ -53,6 +53,11 @@ export default {
     showReplies () {
       if (this.login.loginData.success) {
         this.$store.dispatch(type.SHOW_REPLIES_EDIT)
+      } else {
+        router.push({name: 'user'})
+        this.$store.dispatch(type.HANDEL_CHANGE, {
+          active: 'user'
+        })
       }
     },
     pushreply () {

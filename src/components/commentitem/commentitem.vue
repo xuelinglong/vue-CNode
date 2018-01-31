@@ -29,6 +29,7 @@
 <script>
 import * as type from './../../store/type'
 import { mapState } from 'vuex'
+import router from './../../router/index'
 export default {
   name: 'Commentitem',
   data () {
@@ -52,6 +53,11 @@ export default {
           reply_id: this.comment.id,
           topic_id: this.info.detailsData.id
         })
+      } else {
+        router.push({name: 'user'})
+        this.$store.dispatch(type.HANDEL_CHANGE, {
+          active: 'user'
+        })
       }
     },
     replyToComment () {
@@ -59,6 +65,11 @@ export default {
         this.$store.dispatch(type.SHOW_REPLIES_EDIT)
         this.$store.dispatch(type.SAVE_REPLY_ID, {
           reply_id: this.comment.id
+        })
+      } else {
+        router.push({name: 'user'})
+        this.$store.dispatch(type.HANDEL_CHANGE, {
+          active: 'user'
         })
       }
     }

@@ -1,6 +1,13 @@
 <template>
   <div class="push">
-    <div class="push-view">
+    <div class="push-login" v-if="!login.loginData.success">
+      <div class="main-image">
+        <img class="logo" src="./../../assets/logo.jpg" alt=""/>
+      </div>
+      <mu-raised-button label="去登录" :fullWidth="true" class="demo-raised-button" @click.native="goToLogin" primary/><br/>
+    </div>
+
+    <div class="push-view" v-if="login.loginData.success">
       <mu-select-field v-model="tab" :labelFocusClass="['label-foucs']" label="选择话题类型">
         <mu-menu-item v-for="item in list" :key="item.index" :value="item.tab" :title="item.title" />
       </mu-select-field><br/>
@@ -14,6 +21,7 @@
 <script>
 import * as type from './../../store/type'
 import { mapState } from 'vuex'
+import router from './../../router/index'
 export default {
   name: 'Push',
   data () {
@@ -36,6 +44,12 @@ export default {
     ])
   },
   methods: {
+    goToLogin () {
+      router.push({name: 'user'})
+      this.$store.dispatch(type.HANDEL_CHANGE, {
+        active: 'user'
+      })
+    },
     pushNewTopic () {
       if (this.login.loginData.success) {
         if (this.content.length > 0) {
@@ -63,7 +77,31 @@ export default {
   top 56px
   left 0
   bottom 56px
-  background #f0f0f0
+}
+
+.push-login {
+  width 100%
+  height 100%
+  padding 10% 0
+  box-sizing border-box
+}
+
+.main-image {
+  width 100%
+  height 30%
+  padding: 20px
+  box-sizing border-box
+}
+
+.logo {
+  width 300px
+  height 150px
+}
+
+.demo-raised-button {
+  width 80%
+  margin 30px 0 15px 0
+  font-size 1.1rem
 }
 
 .push-view {
@@ -73,6 +111,7 @@ export default {
   left 0
   bottom 56px
   padding-top 20px
+  background #f0f0f0
 }
 
 .mu-dropDown-menu {
