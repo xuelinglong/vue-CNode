@@ -14,7 +14,7 @@
       </div>
       <div class="icon-box">
         <div class="icon-left">
-          <span class="author-name">{{ topic.author.loginname }}</span>
+          <span class="author-name">{{ topic.author.loginname }}   {{ topic.create_at | filterTime }} </span>
         </div>
         <div class="icon-right">
           <mu-icon value="visibility" :size="15" color="#D3DCE6"/>
@@ -96,7 +96,7 @@ export default {
 }
 
 .icon-left {
-  flex 1
+  flex 2
   text-align left
   padding-left 3%
   width 50%

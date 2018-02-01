@@ -8,7 +8,7 @@
         来自：{{ message.author.loginname }}
       </div>
       <div class="time-box">
-        时间
+        {{ message.reply.create_at | filterTime }}
       </div>
     </div>
     <div class="content">
@@ -56,7 +56,7 @@ export default {
 }
 
 .authorname-box {
-  flex 4
+  flex 3
   min-height 50px
   padding 15px 5px 0 10px
   font-size 1.1rem
@@ -65,8 +65,9 @@ export default {
 }
 
 .time-box {
-  flex 1
+  flex 2
   width 60px
+  text-align right
   padding 15px 5px 0 10px
   font-size 1.1rem
 }

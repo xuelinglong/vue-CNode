@@ -69,6 +69,7 @@ export default {
           reply_id: this.info.reply_toComment_id
         })
         this.$store.dispatch(type.SHOW_REPLIES_EDIT)
+        this.content = []
       }
     },
     cancel () {
