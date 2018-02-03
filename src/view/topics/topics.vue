@@ -15,7 +15,10 @@
       <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="loadTop"/>
       <v-contentitem v-for="topic in topics.topicsdata" :key="topic.id" :topic="topic"></v-contentitem>
       <!-- <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loadingText="正在加载..."/> -->
-      <p class="loading" v-show="this.busy">正在加载...</p>
+      <p class="loading" v-show="this.busy">
+        <mu-circular-progress :size="25"/>
+        正在加载...
+      </p>
       <p class="nomoredata" v-show="this.nomoredata">到底啦～</p>
     </div>
 
@@ -155,7 +158,7 @@ export default {
 .nomoredata {
   width 100%
   height 25px
-  font-size 1.1rem
+  font-size 1.2rem
   box-sizing border-box
 }
 </style>
