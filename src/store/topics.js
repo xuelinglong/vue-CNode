@@ -1,6 +1,17 @@
 import * as type from './type'
 import axios from 'axios'
 
+const getters = {
+  [type.TOPICS_DATA_LENGTH] (state) {
+    let arr = state.topicsdata
+    if (arr) {
+      return arr.length
+    } else {
+      return 0
+    }
+  }
+}
+
 const mutations = {
   [type.FETCH_TOPICS] (state, action) {
     state.topicsdata = action.data
@@ -35,6 +46,7 @@ export default {
   state: {
     topicsdata: []
   },
+  getters,
   mutations,
   actions
 }

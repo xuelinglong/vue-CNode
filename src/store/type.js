@@ -4,6 +4,8 @@ export const HANDEL_CHANGE = 'HANDEL_CHANGE'
 // topics
 export const FETCH_TOPICS = 'FETCH_TOPICS'
 export const CLEAR_TOPICSDATA = 'CLEAR_TOPICSDATA'
+// topics getters
+export const TOPICS_DATA_LENGTH = 'TOPICS_DATA_LENGTH'
 
 // user
 export const FETCH_USERDATA = 'FETCH_USERDATA'

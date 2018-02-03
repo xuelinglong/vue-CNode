@@ -3,6 +3,7 @@
 import Vue from 'vue'
 import App from './App'
 import router from './router'
+import infiniteScroll from 'vue-infinite-scroll'
 
 import MuseUI from 'muse-ui'
 import 'muse-ui/dist/muse-ui.css'
@@ -15,6 +16,7 @@ axios.defaults.baseURL = 'https://cnodejs.org/api/v1/'
 Vue.config.productionTip = false
 
 Vue.use(MuseUI)
+Vue.use(infiniteScroll)
 
 Vue.filter('filterTime', function (value) {
   if (!value) return ''

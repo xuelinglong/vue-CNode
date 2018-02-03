@@ -11,10 +11,12 @@
       </mu-tabs>
     </div>
 
-    <div class="contentlist">
+    <div class="contentlist" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="30">
       <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="loadTop"/>
       <v-contentitem v-for="topic in topics.topicsdata" :key="topic.id" :topic="topic"></v-contentitem>
-      <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loadingText="正在加载..."/>
+      <!-- <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loadingText="正在加载..."/> -->
+      <p class="loading" v-show="this.busy">正在加载...</p>
+      <p class="nomoredata" v-show="this.nomoredata">到底啦～</p>
     </div>
 
   </div>
@@ -22,7 +24,7 @@
 
 <script>
 import * as type from './../../store/type'
-import { mapState } from 'vuex'
+import { mapState, mapGetters } from 'vuex'
 import Contentitem from './../../components/contentitem/contentitem'
 let tabName = 'all'
 export default {
@@ -33,8 +35,10 @@ export default {
       page: 0,
       refreshing: false,
       trigger: null,
-      loading: false,
-      scroller: null
+      // loading: false,
+      // scroller: null,
+      busy: false,
+      nomoredata: false
     }
   },
   components: {
@@ -43,6 +47,9 @@ export default {
   computed: {
     ...mapState([
       'topics'
+    ]),
+    ...mapGetters([
+      'TOPICS_DATA_LENGTH'
     ])
   },
   created () {
@@ -51,13 +58,14 @@ export default {
   },
   mounted () {
     this.trigger = this.$el
-    this.scroller = this.$el
+    // this.scroller = this.$el
   },
   methods: {
     handleTabChange (val) {
       this.activeTab = val
       tabName = val
       this.$store.dispatch(type.CLEAR_TOPICSDATA)
+      this.page = 1
       switch (val) {
         case 'all':
           this.fetchtopics('all', 0, 20)
@@ -94,12 +102,19 @@ export default {
       }, 2000)
     },
     loadMore () {
-      this.loading = true
-      setTimeout(() => {
+      if (this.TOPICS_DATA_LENGTH > 0 && !this.nomoredata) {
+        this.busy = true
         this.page += 1
         this.fetchtopics(this.activeTab, this.page, 20)
-        this.loading = false
-      }, 2000)
+        setTimeout(() => {
+          this.busy = false
+          if (this.TOPICS_DATA_LENGTH % 20 === 0 && this.TOPICS_DATA_LENGTH / 20 < this.page) {
+            this.page -= 1
+          } else if (this.TOPICS_DATA_LENGTH % 20 !== 0) {
+            this.nomoredata = true
+          }
+        }, 3000)
+      }
     }
   }
 }
@@ -128,5 +143,19 @@ export default {
   left 0
   bottom 56px
   overflow-y auto
+}
+
+.loading {
+  width 100%
+  height 25px
+  font-size 1.1rem
+  box-sizing border-box
+}
+
+.nomoredata {
+  width 100%
+  height 25px
+  font-size 1.1rem
+  box-sizing border-box
 }
 </style>
