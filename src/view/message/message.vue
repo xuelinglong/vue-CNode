@@ -4,7 +4,9 @@
       <div class="main-image">
         <img class="logo" src="./../../assets/logo.jpg" alt=""/>
       </div>
-      <mu-raised-button label="去登录" :fullWidth="true" class="demo-raised-button" @click.native="goToLogin" primary/><br/>
+      <div class="loginbutton">
+        <mu-raised-button label="去登录" :fullWidth="true" class="demo-raised-button" @click.native="goToLogin" primary/><br/>
+      </div>
     </div>
 
     <div class="message-view" v-if="login.loginData.success">
@@ -93,9 +95,12 @@ export default {
   height 150px
 }
 
-.demo-raised-button {
+.loginbutton {
   width 80%
-  margin 30px 0 15px 0
+  margin 10% 10%
+}
+
+.demo-raised-button {
   font-size 1.1rem
 }
 

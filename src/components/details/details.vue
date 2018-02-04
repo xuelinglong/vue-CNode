@@ -1,12 +1,19 @@
 <template>
   <div class="details">
-    <mu-appbar title="话题正文">
-      <mu-icon-button icon="arrow_back" slot="left" @click="back" />
-      <mu-icon-button icon="chat" @click="gotoComments" slot="right"></mu-icon-button>
-      <span class="replies-count" slot="right" v-show="REPLIES_COUNT > 0">{{ REPLIES_COUNT }}</span>
-      <mu-icon-button v-show="!info.detailsData.is_collect" @click="handelCollect" icon="star" slot="right" iconClass="collect"></mu-icon-button>
-      <mu-icon-button v-show="info.detailsData.is_collect" @click="handelCollect" icon="star" slot="right" iconClass="collected" style="color: yellow"></mu-icon-button>
-    </mu-appbar>
+    <div class="paperbar">
+      <div class="paper-left">
+        <mu-icon-button icon="arrow_back" slot="left" @click="back" />
+      </div>
+      <div class="paper-center">
+        <span class="title">话题正文</span>
+      </div>
+      <div class="paper-right">
+        <span class="replies-count" slot="right" v-show="REPLIES_COUNT > 0">{{ REPLIES_COUNT }}</span>
+        <mu-icon-button icon="chat" @click="gotoComments" slot="right"></mu-icon-button>
+        <mu-icon-button v-show="!info.detailsData.is_collect" @click="handelCollect" icon="star" slot="right" iconClass="collect"></mu-icon-button>
+        <mu-icon-button v-show="info.detailsData.is_collect" @click="handelCollect" icon="star" slot="right" iconClass="collected" style="color: yellow"></mu-icon-button>
+      </div>
+    </div>
 
     <div class="content-details">
       <p class="details-title">{{ info.detailsData.title }}</p>
@@ -103,20 +110,50 @@ export default {
   z-index 3
 }
 
-.mu-appbar {
+.paperbar {
   width 100%
   height 56px
+  display flex
   position fixed
   top 0
   left 0
+  color #ffffff
+  padding 2px 0
+  box-sizing border-box
+  background #7e57c2
+}
+
+.paper-left {
+  height 100%
+  padding-top 3px
+  box-sizing border-box
+}
+
+.paper-center {
+  flex 3
+  padding-left 8px
+  padding-right 8px
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
+  overflow hidden
+  font-size 20px
+  font-weight 400
+  line-height 56px
+}
+
+.paper-right {
+  height 100%
+  padding-top 3px
+  box-sizing border-box
 }
 
 .replies-count {
   width 30px
   height 30px
   position relative
-  right 20px
-  bottom 10px
+  left 50px
+  bottom 23px
   text-align center
   border-radius 100%
   background #e91e63

@@ -129,6 +129,5 @@ export default {
 .reply-count {
   width 80px
   height 20px
-  // float right
 }
 </style>

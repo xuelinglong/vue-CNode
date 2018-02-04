@@ -1,9 +1,16 @@
 <template>
   <div class="comments">
-    <mu-appbar :title="REPLIES_COUNT + '条评论'">
-      <mu-icon-button icon="arrow_back" slot="left" @click="back" />
-      <mu-icon-button icon="mode_edit" slot="right" @click="showReplies" />
-    </mu-appbar>
+    <div class="paperbar">
+      <div class="paper-left">
+        <mu-icon-button icon="arrow_back" slot="left" @click="back" />
+      </div>
+      <div class="paper-center">
+        <span class="title">{{ REPLIES_COUNT }}条评论</span>
+      </div>
+      <div class="paper-right">
+        <mu-icon-button icon="mode_edit" slot="right" @click="showReplies" />
+      </div>
+    </div>
 
     <div class="commentslist">
       <v-commentitem v-for="comment in info.detailsData.replies" :key="comment.id" :comment="comment"></v-commentitem>
@@ -12,10 +19,11 @@
     <div class="replies-edit" v-show="info.showreplies">
       <div class="reply-content-box">
         <textarea class="input" v-model="content"></textarea>
-        <div class="icon-button">
-          <button class="push" @click="pushreply">发表</button>
-          <button class="cancel" @click="cancel">取消</button>
+        <div class="replies-button">
+          <button class="replies-push" @click="pushreply">发表</button>
+          <button class="replies-cancel" @click="cancel">取消</button>
         </div>
+        <mu-toast v-if="toast" message="正文不能为空" @close="hideToast"/>
       </div>
     </div>
   </div>
@@ -31,7 +39,8 @@ export default {
   data () {
     return {
       accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c',
-      content: []
+      content: [],
+      toast: false
     }
   },
   computed: {
@@ -70,11 +79,20 @@ export default {
         })
         this.$store.dispatch(type.SHOW_REPLIES_EDIT)
         this.content = []
+      } else {
+        this.toast = true
+        setTimeout(() => {
+          this.hideToast()
+        }, 1000)
       }
     },
     cancel () {
       this.$store.dispatch(type.SHOW_REPLIES_EDIT)
       this.$store.dispatch(type.CLEAR_REPLY_ID)
+    },
+    hideToast () {
+      this.toast = false
+      if (this.toastTimer) clearTimeout(this.toastTimer)
     }
   }
 }
@@ -93,17 +111,42 @@ export default {
   z-index 3
 }
 
-.mu-appbar {
+.paperbar {
   width 100%
   height 56px
+  display flex
   position fixed
   top 0
   left 0
+  color #ffffff
+  padding 2px 0
+  box-sizing border-box
+  background #7e57c2
 }
 
-.mu-appbar-title {
-  width 300px
-  flex: 4
+.paper-left {
+  height 100%
+  padding-top 3px
+  box-sizing border-box
+}
+
+.paper-center {
+  flex 3
+  padding-left 8px
+  padding-right 8px
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
+  overflow hidden
+  font-size 20px
+  font-weight 400
+  line-height 56px
+}
+
+.paper-right {
+  height 100%
+  padding-top 3px
+  box-sizing border-box
 }
 
 .commentslist {
@@ -144,7 +187,7 @@ export default {
   border 1px solid #000000
 }
 
-.icon-button {
+.replies-button {
   width 100%
   height 70px
   display flex
@@ -153,12 +196,18 @@ export default {
   box-sizing border-box
 }
 
-.push {
+.replies-push {
   flex 1
   color #7e57c2
 }
 
-.cancel {
+.replies-cancel {
   flex 1
+}
+
+.mu-toast {
+  position fixed
+  top 40%
+  left 0
 }
 </style>

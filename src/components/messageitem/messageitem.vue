@@ -1,19 +1,21 @@
 <template>
   <div class="messageitem">
-    <div class="top-box">
-      <div class="authorimg-box">
-        <img class="author-img" :src="message.author.avatar_url" />
+    <router-link :to="{name: 'details', params: {id: message.topic.id}}">
+      <div class="top-box">
+        <div class="authorimg-box">
+          <img class="author-img" :src="message.author.avatar_url" />
+        </div>
+        <div class="authorname-box">
+          来自：{{ message.author.loginname }}
+        </div>
+        <div class="time-box">
+          {{ message.reply.create_at | filterTime }}
+        </div>
       </div>
-      <div class="authorname-box">
-        来自：{{ message.author.loginname }}
+      <div class="content">
+        {{ message.reply.content }}
       </div>
-      <div class="time-box">
-        {{ message.reply.create_at | filterTime }}
-      </div>
-    </div>
-    <div class="content">
-      {{ message.reply.content }}
-    </div>
+    </router-link>
   </div>
 </template>
 

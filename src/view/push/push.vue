@@ -4,7 +4,9 @@
       <div class="main-image">
         <img class="logo" src="./../../assets/logo.jpg" alt=""/>
       </div>
-      <mu-raised-button label="去登录" :fullWidth="true" class="demo-raised-button" @click.native="goToLogin" primary/><br/>
+      <div class="button-login">
+        <mu-raised-button label="去登录" :fullWidth="true" class="demo-raised-button" @click.native="goToLogin" primary/><br/>
+      </div>
     </div>
 
     <div class="push-view" v-if="login.loginData.success">
@@ -12,8 +14,10 @@
         <mu-menu-item v-for="item in list" :key="item.index" :value="item.tab" :title="item.title" />
       </mu-select-field><br/>
       <mu-text-field label="输入标题" hintText="标题不得少于10个字符" v-model="title"/><br/>
-      <textarea class="content" v-model="content" placeholder="正文不能为空"></textarea>
-      <mu-raised-button label="发布" class="demo-raised-button" @click="pushNewTopic" primary fullWidth/>
+      <textarea class="push-content" v-model="content" placeholder="正文不能为空"></textarea>
+      <div class="button-login">
+        <mu-raised-button label="发布" class="demo-raised-button" @click="pushNewTopic" primary fullWidth/>
+      </div>
     </div>
   </div>
 </template>
@@ -98,9 +102,12 @@ export default {
   height 150px
 }
 
-.demo-raised-button {
+.button-login {
   width 80%
-  margin 30px 0 15px 0
+  margin 10% 10%
+}
+
+.demo-raised-button {
   font-size 1.1rem
 }
 
@@ -122,15 +129,10 @@ export default {
   text-align left
 }
 
-.content {
+.push-content {
   width 80%
   height 260px
   border 1px solid #000000
   background #f0f0f0
-}
-
-.demo-raised-button {
-  margin-top 30px
-  width 80%
 }
 </style>

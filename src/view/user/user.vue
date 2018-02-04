@@ -3,8 +3,12 @@
     <div class="view-login" v-if="!login.loginData.success">
       <mu-text-field hintText="accesstoken" v-model="accesstoken" type="string" icon="lock_outline" underlineFocusClass="line-focus"/><br/>
       <div class="button-box">
-        <mu-raised-button label="登录" :fullWidth="true" class="demo-raised-button" @click.native="tapToLogin" primary/><br/>
-        <mu-raised-button label="注册" :fullWidth="true" class="demo-raised-button" href="https://www.vue-js.com/signup" primary/>
+        <div class="main-button">
+          <mu-raised-button label="登录" :fullWidth="true" class="demo-raised-button" @click.native="tapToLogin" primary/><br/>
+        </div>
+        <div class="main-button">
+          <mu-raised-button label="注册" :fullWidth="true" class="demo-raised-button" href="https://www.vue-js.com/signup" primary/>
+        </div>
       </div>
     </div>
 
@@ -95,8 +99,12 @@ export default {
   margin-left 10%
 }
 
+.main-button {
+  width 100%
+  margin-top 30px
+}
+
 .demo-raised-button {
-  margin 30px 0 15px 0
   font-size 1.1rem
 }
 

@@ -1,10 +1,17 @@
 <template>
   <div class="usertopics">
-    <mu-appbar :title="this.title + ' (' + this.length + ')'">
-      <mu-icon-button icon="close" @click="back" slot="left"/>
-      <div slot="content">{{ this.title }}({{ this.length }})</div>
-      <mu-icon-button icon="" slot="right" />
-    </mu-appbar>
+    <div class="paperbar">
+      <div class="paper-left">
+        <mu-icon-button icon="close" @click="back" slot="left"/>
+      </div>
+      <div class="paper-center">
+        <span class="title">{{ title }} ( {{ length }} )</span>
+      </div>
+      <div class="paper-right">
+        <mu-icon-button icon="" slot="right"/>
+        <mu-icon-button icon="" slot="right"/>
+      </div>
+    </div>
 
     <div class="list">
       <v-usertopicitem v-for="topic in lists" :key="topic.id" :topic="topic"></v-usertopicitem>
@@ -78,12 +85,42 @@ export default {
   z-index 3
 }
 
-.mu-appbar {
+.paperbar {
   width 100%
   height 56px
+  display flex
   position fixed
   top 0
   left 0
+  color #ffffff
+  padding 2px 0
+  box-sizing border-box
+  background #7e57c2
+}
+
+.paper-left {
+  height 100%
+  padding-top 3px
+  box-sizing border-box
+}
+
+.paper-center {
+  flex 3
+  padding-left 8px
+  padding-right 8px
+  white-space nowrap
+  overflow hidden
+  text-overflow ellipsis
+  overflow hidden
+  font-size 20px
+  font-weight 400
+  line-height 56px
+}
+
+.paper-right {
+  height 100%
+  padding-top 3px
+  box-sizing border-box
 }
 
 .list {
