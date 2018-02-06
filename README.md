@@ -1,7 +1,8 @@
 # vue-CNode
 使用vue重构Node.js中文社区
 
-> A Vue.js project
+## 预览地址
+[demo地址]( https://xuelinglong.github.io/vue-CNode/)
 
 ## Build Setup
 
