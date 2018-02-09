@@ -132,8 +132,8 @@ export default {
 
 .paper-center {
   flex 3
-  padding-left 8px
-  padding-right 8px
+  padding-left 6px
+  padding-right 6px
   white-space nowrap
   overflow hidden
   text-overflow ellipsis

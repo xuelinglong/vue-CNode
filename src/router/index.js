@@ -33,7 +33,10 @@ const router = new Router({
     {
       path: '/user',
       name: 'user',
-      component: user
+      component: user,
+      meta: {
+        keepAlive: true
+      }
     },
     {
       path: '/usertopics/:type',

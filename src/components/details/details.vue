@@ -8,8 +8,9 @@
         <span class="title">话题正文</span>
       </div>
       <div class="paper-right">
-        <span class="replies-count" slot="right" v-show="REPLIES_COUNT > 0">{{ REPLIES_COUNT }}</span>
-        <mu-icon-button icon="chat" @click="gotoComments" slot="right"></mu-icon-button>
+        <mu-badge :content="repliesCount" class="demo-icon-badge" slot="right" v-show="REPLIES_COUNT > 0" circle secondary>
+          <mu-icon value="chat" @click="gotoComments"></mu-icon>
+        </mu-badge>
         <mu-icon-button v-show="!info.detailsData.is_collect" @click="handelCollect" icon="star" slot="right" iconClass="collect"></mu-icon-button>
         <mu-icon-button v-show="info.detailsData.is_collect" @click="handelCollect" icon="star" slot="right" iconClass="collected" style="color: yellow"></mu-icon-button>
       </div>
@@ -35,7 +36,8 @@ export default {
   name: 'Details',
   data () {
     return {
-      accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c'
+      accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c',
+      repliesCount: ''
     }
   },
   created () {
@@ -50,7 +52,13 @@ export default {
       })
     }
   },
+  beforeUpdate () {
+    this.lengthToString()
+  },
   methods: {
+    lengthToString () {
+      this.repliesCount = this.REPLIES_COUNT.toString()
+    },
     back () {
       router.go(-1)
       this.$store.dispatch(type.CLEAR_TOPIC_DETAILS)
@@ -127,8 +135,8 @@ export default {
 
 .paper-center {
   flex 3
-  padding-left 8px
-  padding-right 8px
+  padding-left 6px
+  padding-right 6px
   white-space nowrap
   overflow hidden
   text-overflow ellipsis
@@ -142,17 +150,6 @@ export default {
   height 100%
   padding-top 3px
   box-sizing border-box
-}
-
-.replies-count {
-  width 30px
-  height 30px
-  position relative
-  left 50px
-  bottom 23px
-  text-align center
-  border-radius 100%
-  background #e91e63
 }
 
 .content-details {

@@ -21,17 +21,20 @@
       <mu-list>
         <mu-list-item title="我收藏的话题" :to="{name: 'usertopics', params: {type: 'topic_collect'}}" titleClass="left">
           <mu-icon slot="left" value="star" style="color: #ffd600"/>
-          <span class="count" slot="right">{{ TOPIC_COLLECT }}</span>
+          <mu-badge :content="topicCollect" class="demo-icon-badge" slot="right" v-show="TOPIC_COLLECT > 0" circle secondary />
+          <span class="no-count" slot="right" v-show="TOPIC_COLLECT === 0"></span>
           <mu-icon slot="right" value="chevron_right"/>
         </mu-list-item>
         <mu-list-item title="我参与的话题" :to="{name: 'usertopics', params: {type: 'recent_replies'}}">
           <mu-icon slot="left" value="chat" style="color: #00b1fe"/>
-          <span class="count" slot="right">{{ RECENT_REPLIES }}</span>
+          <mu-badge :content="recentReplies" class="demo-icon-badge" slot="right" v-show="RECENT_REPLIES > 0" circle secondary />
+          <span class="no-count" slot="right" v-show="RECENT_REPLIES === 0"></span>
           <mu-icon slot="right" value="chevron_right"/>
         </mu-list-item>
         <mu-list-item title="我最近的话题" :to="{name: 'usertopics', params: {type: 'recent_topics'}}">
           <mu-icon slot="left" value="bubble_chart" style="color: #e91e63"/>
-          <span class="count" slot="right">{{ RECENT_TOPICS }}</span>
+          <mu-badge :content="recentTopics" class="demo-icon-badge" slot="right" v-show="RECENT_TOPICS > 0" circle secondary />
+          <span class="no-count" slot="right" v-show="RECENT_TOPICS === 0"></span>
           <mu-icon slot="right" value="chevron_right"/>
         </mu-list-item>
       </mu-list>
@@ -50,10 +53,21 @@ export default {
   name: 'User',
   data () {
     return {
-      accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c'
+      accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c',
+      topicCollect: '0',
+      recentReplies: '0',
+      recentTopics: '0'
     }
   },
+  beforeUpdate () {
+    this.lengthToString()
+  },
   methods: {
+    lengthToString () {
+      this.topicCollect = this.TOPIC_COLLECT.toString()
+      this.recentReplies = this.RECENT_REPLIES.toString()
+      this.recentTopics = this.RECENT_TOPICS.toString()
+    },
     tapToLogin () {
       this.$store.dispatch(type.LOGIN, {
         accesstoken: this.accesstoken
@@ -68,9 +82,9 @@ export default {
       'login'
     ]),
     ...mapGetters([
+      'TOPIC_COLLECT',
       'RECENT_REPLIES',
-      'RECENT_TOPICS',
-      'TOPIC_COLLECT'
+      'RECENT_TOPICS'
     ])
   }
 }
@@ -143,14 +157,13 @@ export default {
   width 50px
 }
 
-.count {
+.no-count {
   width 24px
   height 24px
   font-size 0.9rem
   color #ffffff
   text-align center
   border-radius 100%
-  background #e91e63
 }
 
 .loginout {

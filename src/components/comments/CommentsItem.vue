@@ -157,7 +157,7 @@ export default {
 .text {
   width 48px
   height 48px
-  padding 10px 0
+  padding 12px 0
   position relative
   bottom 5px
   right 5px
