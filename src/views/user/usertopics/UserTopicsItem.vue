@@ -1,5 +1,5 @@
 <template>
-  <div class="usertopicitem">
+  <div class="UserTopicsItem">
     <router-link :to="{name: 'details', params: {id: topic.id}}">
       <div class="image-author">
         <img class="author" :src="topic.author.avatar_url" />
@@ -16,13 +16,13 @@
 
 <script>
 export default {
-  name: 'Usertopicitem',
+  name: 'UserTopicsItem',
   props: ['topic']
 }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.usertopicitem {
+.UserTopicsItem {
   width 100%
   min-height 100px
   padding: 5px

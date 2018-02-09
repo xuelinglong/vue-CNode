@@ -1,5 +1,5 @@
 <template>
-  <div class="messageitem">
+  <div class="MessageItem">
     <router-link :to="{name: 'details', params: {id: message.topic.id}}">
       <div class="top-box">
         <div class="authorimg-box">
@@ -21,13 +21,13 @@
 
 <script>
 export default {
-  name: 'messageitem',
+  name: 'MessageItem',
   props: ['message']
 }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.messageitem {
+.MessageItem {
   width 100%
   min-height 130px
   padding: 5px

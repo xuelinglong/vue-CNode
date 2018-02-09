@@ -1,5 +1,5 @@
 <template>
-  <div class="comments">
+  <div class="Comments">
     <div class="paperbar">
       <div class="paper-left">
         <mu-icon-button icon="arrow_back" slot="left" @click="back" />
@@ -13,7 +13,7 @@
     </div>
 
     <div class="commentslist">
-      <v-commentitem v-for="comment in info.detailsData.replies" :key="comment.id" :comment="comment"></v-commentitem>
+      <comments-list-item v-for="comment in info.detailsData.replies" :key="comment.id" :comment="comment"></comments-list-item>
     </div>
 
     <div class="replies-edit" v-show="info.showreplies">
@@ -23,7 +23,7 @@
           <button class="replies-push" @click="pushreply">发表</button>
           <button class="replies-cancel" @click="cancel">取消</button>
         </div>
-        <mu-toast v-if="toast" message="正文不能为空" @close="hideToast"/>
+        <mu-toast v-if="toast" message="评论正文不能为空" @close="hideToast"/>
       </div>
     </div>
   </div>
@@ -33,7 +33,7 @@
 import * as type from './../../store/type'
 import { mapState, mapGetters } from 'vuex'
 import router from './../../router/index'
-import Commentitem from './../commentitem/commentitem'
+import CommentsItem from './CommentsItem'
 export default {
   name: 'Comments',
   data () {
@@ -53,7 +53,7 @@ export default {
     ])
   },
   components: {
-    'v-commentitem': Commentitem
+    'comments-list-item': CommentsItem
   },
   methods: {
     back () {
@@ -99,7 +99,7 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.comments {
+.Comments {
   width 100%
   height 100%
   position fixed

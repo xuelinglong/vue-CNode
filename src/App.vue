@@ -1,22 +1,22 @@
 <template>
   <div id="app">
-    <v-appbar></v-appbar>
+    <app-appbar></app-appbar>
     <keep-alive>
       <router-view v-if="$route.meta.keepAlive"/>
     </keep-alive>
     <router-view v-if="!$route.meta.keepAlive"/>
-    <v-bottomnav></v-bottomnav>
+    <app-bottomnav></app-bottomnav>
   </div>
 </template>
 
 <script>
-import Bottomnav from './components/bottomnav/bottomnav'
-import Appbar from './components/appbar/appbar'
+import Bottomnav from './components/bottomnav/Bottomnav'
+import Appbar from './components/appbar/Appbar'
 export default {
   name: 'App',
   components: {
-    'v-bottomnav': Bottomnav,
-    'v-appbar': Appbar
+    'app-bottomnav': Bottomnav,
+    'app-appbar': Appbar
   }
 }
 </script>

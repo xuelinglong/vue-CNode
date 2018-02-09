@@ -1,5 +1,5 @@
 <template>
-  <div class="details">
+  <div class="Details">
     <div class="paperbar">
       <div class="paper-left">
         <mu-icon-button icon="arrow_back" slot="left" @click="back" />
@@ -98,7 +98,7 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.details {
+.Details {
   width 100%
   height 100%
   position fixed

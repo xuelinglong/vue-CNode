@@ -1,5 +1,5 @@
 <template>
-  <div class="commentitem">
+  <div class="CommentsItem">
     <div class="top-box">
       <div class="authorimg-box">
         <img class="author-img" :src="comment.author.avatar_url" />
@@ -31,7 +31,7 @@ import * as type from './../../store/type'
 import { mapState } from 'vuex'
 import router from './../../router/index'
 export default {
-  name: 'Commentitem',
+  name: 'CommentsItem',
   data () {
     return {
       accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c',
@@ -78,7 +78,7 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.commentitem {
+.CommentsItem {
   width 100%
   min-height 180px
   padding: 5px

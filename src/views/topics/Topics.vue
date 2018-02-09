@@ -1,5 +1,5 @@
 <template>
-  <div class="topics">
+  <div class="Topics">
     <div class="tab">
       <mu-tabs :value="activeTab" @change="handleTabChange">
         <mu-tab value="all" title="全部"/>
@@ -13,7 +13,7 @@
 
     <div class="contentlist" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="30">
       <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="loadTop"/>
-      <v-contentitem v-for="topic in topics.topicsdata" :key="topic.id" :topic="topic"></v-contentitem>
+      <topics-item v-for="topic in topics.topicsdata" :key="topic.id" :topic="topic"></topics-item>
       <!-- <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loadingText="正在加载..."/> -->
       <p class="loading" v-show="this.busy">
         <mu-circular-progress :size="25"/>
@@ -28,7 +28,7 @@
 <script>
 import * as type from './../../store/type'
 import { mapState, mapGetters } from 'vuex'
-import Contentitem from './../../components/contentitem/contentitem'
+import TopicsItem from './TopicsItem'
 let tabName = 'all'
 export default {
   name: 'Topics',
@@ -45,7 +45,7 @@ export default {
     }
   },
   components: {
-    'v-contentitem': Contentitem
+    'topics-item': TopicsItem
   },
   computed: {
     ...mapState([
@@ -124,7 +124,7 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.topics {
+.Topics {
   width 100%
   position fixed
   top 56px

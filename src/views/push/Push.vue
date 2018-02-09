@@ -1,5 +1,5 @@
 <template>
-  <div class="push">
+  <div class="Push">
     <div class="push-login" v-if="!login.loginData.success">
       <div class="main-image">
         <img class="logo" src="./../../assets/logo.jpg" alt=""/>
@@ -18,6 +18,7 @@
       <div class="button-login">
         <mu-raised-button label="发布" class="demo-raised-button" @click="pushNewTopic" primary fullWidth/>
       </div>
+      <mu-snackbar v-if="snackbar" message="请检查标题和正文的长度" action="关闭" @actionClick="hideSnackbar" @close="hideSnackbar"/>
     </div>
   </div>
 </template>
@@ -38,8 +39,9 @@ export default {
         {tab: 'job', title: '招聘'},
         {tab: 'dev', title: '测试贴'}
       ],
-      title: '',
-      content: []
+      title: [],
+      content: [],
+      snackbar: false
     }
   },
   computed: {
@@ -56,7 +58,7 @@ export default {
     },
     pushNewTopic () {
       if (this.login.loginData.success) {
-        if (this.content.length > 0) {
+        if (this.title.length > 10 && this.content.length > 0) {
           this.$store.dispatch(type.PUSH_NEW_TOPIC, {
             accesstoken: this.accesstoken,
             loginname: this.login.loginData.loginname,
@@ -65,17 +67,26 @@ export default {
             content: this.content
           })
           this.tab = 'ask'
-          this.title = ''
+          this.title = []
           this.content = []
+        } else {
+          this.snackbar = true
+          setTimeout(() => {
+            this.hideSnackbar()
+          }, 1000)
         }
       }
+    },
+    hideSnackbar () {
+      this.snackbar = false
+      if (this.snackTimer) clearTimeout(this.snackTimer)
     }
   }
 }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.push {
+.Push {
   width 100%
   position fixed
   top 56px
@@ -134,5 +145,13 @@ export default {
   height 260px
   border 1px solid #000000
   background #f0f0f0
+}
+
+.mu-snackbar {
+  width 100%
+  height 80px
+  position fixed
+  top 40%
+  left 0
 }
 </style>

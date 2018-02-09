@@ -1,12 +1,12 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-import topics from '@/view/topics/topics'
-import message from '@/view/message/message'
-import push from '@/view/push/push'
-import user from '@/view/user/user'
-import usertopics from '@/view/user/usertopics/usertopics'
-import details from '@/components/details/details'
-import comments from '@/components/comments/comments'
+import topics from '@/views/topics/Topics'
+import message from '@/views/message/Message'
+import push from '@/views/push/Push'
+import user from '@/views/user/User'
+import usertopics from '@/views/user/usertopics/UserTopics'
+import details from '@/components/details/Details'
+import comments from '@/components/comments/Comments'
 
 Vue.use(Router)
 

@@ -1,5 +1,5 @@
 <template>
-  <div class="message">
+  <div class="Message">
     <div class="message-login" v-if="!login.loginData.success">
       <div class="main-image">
         <img class="logo" src="./../../assets/logo.jpg" alt=""/>
@@ -12,7 +12,7 @@
     <div class="message-view" v-if="login.loginData.success">
       <div class="title-text">未读消息({{ HASNOT_READ_MESSAGES }})</div>
       <div class="messagelist" v-if="HASNOT_READ_MESSAGES > 0">
-        <v-messageitem v-for="message in messages.messageData.hasnot_read_messages" :key="message.reply.id" :message="message"></v-messageitem>
+        <message-item v-for="message in messages.messageData.hasnot_read_messages" :key="message.reply.id" :message="message"></message-item>
       </div>
       <div class="blank" v-if="HASNOT_READ_MESSAGES === 0">
         无新消息
@@ -20,7 +20,7 @@
 
       <div class="title-text">过往已读消息({{ HAS_READ_MESSAGES }})</div>
       <div class="messagelist" v-if="HAS_READ_MESSAGES > 0">
-        <v-messageitem v-for="message in messages.messageData.has_read_messages" :key="message.id" :message="message"></v-messageitem>
+        <message-item v-for="message in messages.messageData.has_read_messages" :key="message.id" :message="message"></message-item>
       </div>
       <div class="blank" v-if="HAS_READ_MESSAGES === 0">
         无过往消息
@@ -33,7 +33,7 @@
 import * as type from './../../store/type'
 import { mapState, mapGetters } from 'vuex'
 import router from './../../router/index'
-import Messageitem from './../../components/messageitem/messageitem'
+import MessageItem from './MessageItem'
 export default {
   name: 'Message',
   computed: {
@@ -47,7 +47,7 @@ export default {
     ])
   },
   components: {
-    'v-messageitem': Messageitem
+    'message-item': MessageItem
   },
   created () {
     if (this.login.loginData.success) {
@@ -68,7 +68,7 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.message {
+.Message {
   width 100%
   position fixed
   top 56px

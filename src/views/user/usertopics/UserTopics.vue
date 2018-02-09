@@ -1,5 +1,5 @@
 <template>
-  <div class="usertopics">
+  <div class="Usertopics">
     <div class="paperbar">
       <div class="paper-left">
         <mu-icon-button icon="close" @click="back" slot="left"/>
@@ -14,7 +14,7 @@
     </div>
 
     <div class="list">
-      <v-usertopicitem v-for="topic in lists" :key="topic.id" :topic="topic"></v-usertopicitem>
+      <user-topics-item v-for="topic in lists" :key="topic.id" :topic="topic"></user-topics-item>
     </div>
   </div>
 </template>
@@ -22,9 +22,9 @@
 <script>
 import { mapState, mapGetters } from 'vuex'
 import router from './../../../router/index'
-import Usertopicitem from './../../../components/usertopicitem/usertopicitem'
+import UserTopicsItem from './UserTopicsItem'
 export default {
-  name: 'Usertopics',
+  name: 'UserTopics',
   data () {
     return {
       lists: [],
@@ -33,7 +33,7 @@ export default {
     }
   },
   components: {
-    'v-usertopicitem': Usertopicitem
+    'user-topics-item': UserTopicsItem
   },
   computed: {
     ...mapState([
@@ -74,7 +74,7 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.usertopics {
+.Usertopics {
   width 100%
   height 100%
   position fixed

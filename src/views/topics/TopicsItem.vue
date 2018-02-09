@@ -1,5 +1,5 @@
 <template>
-  <div class="contentitem">
+  <div class="TopicsItem">
     <router-link :to="{name: 'details', params: {id: topic.id}}">
       <div class="top-box">
         <div class="author-img">
@@ -29,13 +29,13 @@
 
 <script>
 export default {
-  name: 'Contentitem',
+  name: 'TopicsItem',
   props: ['topic']
 }
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.contentitem {
+.TopicsItem {
   width 100%
   min-height 130px
   padding: 5px
