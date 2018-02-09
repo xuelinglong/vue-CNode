@@ -30,7 +30,11 @@
 <script>
 export default {
   name: 'TopicsItem',
-  props: ['topic']
+  props: {
+    topic: {
+      type: Object
+    }
+  }
 }
 </script>
 

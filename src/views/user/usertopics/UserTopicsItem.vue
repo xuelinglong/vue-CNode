@@ -17,7 +17,9 @@
 <script>
 export default {
   name: 'UserTopicsItem',
-  props: ['topic']
+  props: {
+    topic: Object
+  }
 }
 </script>
 

@@ -19,6 +19,7 @@
         <mu-circular-progress :size="25"/>
         正在加载...
       </p>
+      <p class="isError" v-show="this.isError">加载失败，请重试！！！</p>
       <p class="nomoredata" v-show="this.nomoredata">到底啦～</p>
     </div>
 
@@ -44,7 +45,8 @@ export default {
       // loading: false,
       // scroller: null,
       busy: false,
-      nomoredata: false
+      nomoredata: false,
+      isError: false
     }
   },
   created () {
@@ -98,6 +100,7 @@ export default {
     },
     loadMore () {
       if (this.TOPICS_DATA_LENGTH > 0 && !this.nomoredata) {
+        this.isError = false
         this.busy = true
         this.page += 1
         this.fetchtopics(this.activeTab, this.page, 20)
@@ -105,6 +108,7 @@ export default {
           this.busy = false
           if (this.TOPICS_DATA_LENGTH % 20 === 0 && this.TOPICS_DATA_LENGTH / 20 < this.page) {
             this.page -= 1
+            this.isError = true
           } else if (this.TOPICS_DATA_LENGTH % 20 !== 0) {
             this.nomoredata = true
           }
@@ -156,6 +160,13 @@ export default {
 }
 
 .nomoredata {
+  width 100%
+  height 25px
+  font-size 1.2rem
+  box-sizing border-box
+}
+
+.isError {
   width 100%
   height 25px
   font-size 1.2rem

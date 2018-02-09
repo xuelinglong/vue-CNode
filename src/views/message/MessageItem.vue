@@ -22,7 +22,11 @@
 <script>
 export default {
   name: 'MessageItem',
-  props: ['message']
+  props: {
+    message: {
+      type: Object
+    }
+  }
 }
 </script>
 

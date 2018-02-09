@@ -32,7 +32,11 @@ import { mapState } from 'vuex'
 import router from './../../router/index'
 export default {
   name: 'CommentsItem',
-  props: ['comment'],
+  props: {
+    comment: {
+      type: Object
+    }
+  },
   data () {
     return {
       accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c',
