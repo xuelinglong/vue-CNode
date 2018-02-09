@@ -25,25 +25,15 @@ import router from './../../../router/index'
 import UserTopicsItem from './UserTopicsItem'
 export default {
   name: 'UserTopics',
+  components: {
+    'user-topics-item': UserTopicsItem
+  },
   data () {
     return {
       lists: [],
       title: '',
       length: 0
     }
-  },
-  components: {
-    'user-topics-item': UserTopicsItem
-  },
-  computed: {
-    ...mapState([
-      'user'
-    ]),
-    ...mapGetters([
-      'RECENT_REPLIES',
-      'RECENT_TOPICS',
-      'TOPIC_COLLECT'
-    ])
   },
   created () {
     let type = this.$route.params.type
@@ -69,6 +59,16 @@ export default {
     back () {
       router.go(-1)
     }
+  },
+  computed: {
+    ...mapState([
+      'user'
+    ]),
+    ...mapGetters([
+      'RECENT_REPLIES',
+      'RECENT_TOPICS',
+      'TOPIC_COLLECT'
+    ])
   }
 }
 </script>

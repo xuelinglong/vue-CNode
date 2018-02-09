@@ -36,24 +36,15 @@ import router from './../../router/index'
 import CommentsItem from './CommentsItem'
 export default {
   name: 'Comments',
+  components: {
+    'comments-list-item': CommentsItem
+  },
   data () {
     return {
       accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c',
       content: [],
       toast: false
     }
-  },
-  computed: {
-    ...mapState([
-      'login',
-      'info'
-    ]),
-    ...mapGetters([
-      'REPLIES_COUNT'
-    ])
-  },
-  components: {
-    'comments-list-item': CommentsItem
   },
   methods: {
     back () {
@@ -94,6 +85,15 @@ export default {
       this.toast = false
       if (this.toastTimer) clearTimeout(this.toastTimer)
     }
+  },
+  computed: {
+    ...mapState([
+      'login',
+      'info'
+    ]),
+    ...mapGetters([
+      'REPLIES_COUNT'
+    ])
   }
 }
 </script>

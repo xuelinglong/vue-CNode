@@ -44,11 +44,6 @@ export default {
       snackbar: false
     }
   },
-  computed: {
-    ...mapState([
-      'login'
-    ])
-  },
   methods: {
     goToLogin () {
       router.push({name: 'user'})
@@ -81,6 +76,11 @@ export default {
       this.snackbar = false
       if (this.snackTimer) clearTimeout(this.snackTimer)
     }
+  },
+  computed: {
+    ...mapState([
+      'login'
+    ])
   }
 }
 </script>

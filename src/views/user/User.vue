@@ -53,16 +53,6 @@ export default {
       accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c'
     }
   },
-  computed: {
-    ...mapState([
-      'login'
-    ]),
-    ...mapGetters([
-      'RECENT_REPLIES',
-      'RECENT_TOPICS',
-      'TOPIC_COLLECT'
-    ])
-  },
   methods: {
     tapToLogin () {
       this.$store.dispatch(type.LOGIN, {
@@ -72,6 +62,16 @@ export default {
     loginOut () {
       this.$store.dispatch(type.LOGINOUT)
     }
+  },
+  computed: {
+    ...mapState([
+      'login'
+    ]),
+    ...mapGetters([
+      'RECENT_REPLIES',
+      'RECENT_TOPICS',
+      'TOPIC_COLLECT'
+    ])
   }
 }
 </script>

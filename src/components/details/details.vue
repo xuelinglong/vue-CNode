@@ -31,25 +31,12 @@
 import * as type from './../../store/type'
 import { mapState, mapGetters } from 'vuex'
 import router from './../../router/index'
-// import Contentitem from './../../../components/contentitem/contentitem'
 export default {
   name: 'Details',
   data () {
     return {
       accesstoken: 'af0a22ca-d49f-47ec-afef-51b9cabf4c3c'
     }
-  },
-  // components: {
-  //   'v-contentitem': Contentitem
-  // },
-  computed: {
-    ...mapState([
-      'login',
-      'info'
-    ]),
-    ...mapGetters([
-      'REPLIES_COUNT'
-    ])
   },
   created () {
     if (this.login.loginData.success) {
@@ -93,6 +80,15 @@ export default {
     gotoComments () {
       router.push({name: 'comments'})
     }
+  },
+  computed: {
+    ...mapState([
+      'login',
+      'info'
+    ]),
+    ...mapGetters([
+      'REPLIES_COUNT'
+    ])
   }
 }
 </script>

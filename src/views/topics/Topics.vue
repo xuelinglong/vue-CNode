@@ -32,6 +32,9 @@ import TopicsItem from './TopicsItem'
 let tabName = 'all'
 export default {
   name: 'Topics',
+  components: {
+    'topics-item': TopicsItem
+  },
   data () {
     return {
       activeTab: tabName,
@@ -43,17 +46,6 @@ export default {
       busy: false,
       nomoredata: false
     }
-  },
-  components: {
-    'topics-item': TopicsItem
-  },
-  computed: {
-    ...mapState([
-      'topics'
-    ]),
-    ...mapGetters([
-      'TOPICS_DATA_LENGTH'
-    ])
   },
   created () {
     this.fetchtopics('all', 0, 20)
@@ -119,6 +111,14 @@ export default {
         }, 3000)
       }
     }
+  },
+  computed: {
+    ...mapState([
+      'topics'
+    ]),
+    ...mapGetters([
+      'TOPICS_DATA_LENGTH'
+    ])
   }
 }
 </script>

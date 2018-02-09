@@ -36,16 +36,6 @@ import router from './../../router/index'
 import MessageItem from './MessageItem'
 export default {
   name: 'Message',
-  computed: {
-    ...mapState([
-      'login',
-      'messages'
-    ]),
-    ...mapGetters([
-      'HASNOT_READ_MESSAGES',
-      'HAS_READ_MESSAGES'
-    ])
-  },
   components: {
     'message-item': MessageItem
   },
@@ -63,6 +53,16 @@ export default {
         active: 'user'
       })
     }
+  },
+  computed: {
+    ...mapState([
+      'login',
+      'messages'
+    ]),
+    ...mapGetters([
+      'HASNOT_READ_MESSAGES',
+      'HAS_READ_MESSAGES'
+    ])
   }
 }
 </script>

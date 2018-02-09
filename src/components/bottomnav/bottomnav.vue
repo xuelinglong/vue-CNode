@@ -14,17 +14,17 @@ import * as type from './../../store/type'
 import { mapState } from 'vuex'
 export default {
   name: 'Bottomnav',
-  computed: {
-    ...mapState([
-      'common'
-    ])
-  },
   methods: {
     handleChange (val) {
       this.$store.dispatch(type.HANDEL_CHANGE, {
         active: val
       })
     }
+  },
+  computed: {
+    ...mapState([
+      'common'
+    ])
   }
 }
 </script>
