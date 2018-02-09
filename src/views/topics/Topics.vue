@@ -143,6 +143,11 @@ export default {
   z-index 9
 }
 
+.mu-tab-link {
+  height 48px
+  padding 0 2px
+}
+
 .contentlist {
   width 100%
   position fixed

@@ -100,7 +100,7 @@ export default {
 }
 
 .icon-left {
-  flex 1
+  flex 1.5
   text-align left
   padding-left 3%
   width 50%

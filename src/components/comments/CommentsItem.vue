@@ -12,7 +12,7 @@
       </div>
     </div>
     <div class="content" v-html="comment.content"></div>
-    <div class="icon-box">
+    <div class="icon-bar">
       <div class="left">
         <mu-icon-button icon="comment" @click="replyToComment" :size="14" style="color: #aaaaaa"></mu-icon-button>
         <span class="text">回复</span>
@@ -137,7 +137,7 @@ export default {
   box-sizing border-box
 }
 
-.icon-box {
+.icon-bar {
   width 100%
   height 50px
   display flex
