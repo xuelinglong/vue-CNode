@@ -1,45 +1,45 @@
 <template>
-  <div class="user">
-    <div class="view-login" v-if="!login.loginData.success">
+  <div class="User">
+    <div class="User-login" v-if="!login.loginData.success">
       <mu-text-field hintText="accesstoken" v-model="accesstoken" type="string" icon="lock_outline" underlineFocusClass="line-focus"/><br/>
-      <div class="button-box">
-        <div class="main-button">
-          <mu-raised-button label="登录" :fullWidth="true" class="demo-raised-button" @click.native="tapToLogin" primary/><br/>
+      <div class="User-button-box">
+        <div class="User-main-button">
+          <mu-raised-button label="登录" :fullWidth="true" class="User-demo-raised-button" @click.native="tapToLogin" primary/><br/>
         </div>
-        <div class="main-button">
-          <mu-raised-button label="注册" :fullWidth="true" class="demo-raised-button" href="https://www.vue-js.com/signup" primary/>
+        <div class="User-main-button">
+          <mu-raised-button label="注册" :fullWidth="true" class="User-demo-raised-button" href="https://www.vue-js.com/signup" primary/>
         </div>
       </div>
     </div>
 
-    <div class="view-user" v-if="login.loginData.success">
-      <div class="author-image">
-        <img class="image" :src="login.loginData.avatar_url" alt=""><br/>
-        <span class="loginname">{{ login.loginData.loginname }}</span>
+    <div class="User-view" v-if="login.loginData.success">
+      <div class="User-author-image">
+        <img class="User-image" :src="login.loginData.avatar_url" alt=""><br/>
+        <span class="User-loginname">{{ login.loginData.loginname }}</span>
       </div>
 
       <mu-list>
         <mu-list-item title="我收藏的话题" :to="{name: 'usertopics', params: {type: 'topic_collect'}}" titleClass="left">
           <mu-icon slot="left" value="star" style="color: #ffd600"/>
           <mu-badge :content="topicCollect" class="demo-icon-badge" slot="right" v-show="TOPIC_COLLECT > 0" circle secondary />
-          <span class="no-count" slot="right" v-show="TOPIC_COLLECT === 0"></span>
+          <span class="User-no-count" slot="right" v-show="TOPIC_COLLECT === 0"></span>
           <mu-icon slot="right" value="chevron_right"/>
         </mu-list-item>
         <mu-list-item title="我参与的话题" :to="{name: 'usertopics', params: {type: 'recent_replies'}}">
           <mu-icon slot="left" value="chat" style="color: #00b1fe"/>
           <mu-badge :content="recentReplies" class="demo-icon-badge" slot="right" v-show="RECENT_REPLIES > 0" circle secondary />
-          <span class="no-count" slot="right" v-show="RECENT_REPLIES === 0"></span>
+          <span class="User-no-count" slot="right" v-show="RECENT_REPLIES === 0"></span>
           <mu-icon slot="right" value="chevron_right"/>
         </mu-list-item>
         <mu-list-item title="我最近的话题" :to="{name: 'usertopics', params: {type: 'recent_topics'}}">
           <mu-icon slot="left" value="bubble_chart" style="color: #e91e63"/>
           <mu-badge :content="recentTopics" class="demo-icon-badge" slot="right" v-show="RECENT_TOPICS > 0" circle secondary />
-          <span class="no-count" slot="right" v-show="RECENT_TOPICS === 0"></span>
+          <span class="User-no-count" slot="right" v-show="RECENT_TOPICS === 0"></span>
           <mu-icon slot="right" value="chevron_right"/>
         </mu-list-item>
       </mu-list>
 
-      <div class="loginout">
+      <div class="User-loginout">
         <mu-raised-button label="退出登录" :fullWidth="true" class="demo-raised-button" @click.native="loginOut" primary/>
       </div>
     </div>
@@ -91,7 +91,7 @@ export default {
 </script>
 
 <style lang="stylus" rel="stylesheet/stylus">
-.user {
+.User {
   width 100%
   text-align center
   position fixed
@@ -101,44 +101,44 @@ export default {
   background #f0f0f0
 }
 
-.view-login {
+.User-login {
   width 100%
   height 100%
   padding 10% 0
   box-sizing border-box
 }
 
-.button-box {
+.User-button-box {
   width 80%
   margin-left 10%
 }
 
-.main-button {
+.User-main-button {
   width 100%
   margin-top 30px
 }
 
-.demo-raised-button {
+.User-demo-raised-button {
   font-size 1.1rem
 }
 
-.view-user {
+.User-view {
   width 100%
   height 100%
 }
 
-.author-image {
+.User-author-image {
   width 100%
   height 37%
   padding-top 5%
   background #7e57c2
 }
 
-.image {
+.User-image {
   border-radius 100%
 }
 
-.loginname {
+.User-loginname {
   font-size 1.1rem
   color #ffffff
 }
@@ -157,7 +157,7 @@ export default {
   width 50px
 }
 
-.no-count {
+.User-no-count {
   width 24px
   height 24px
   font-size 0.9rem
@@ -166,7 +166,7 @@ export default {
   border-radius 100%
 }
 
-.loginout {
+.User-loginout {
   width 80%
   position relative
   top 5%

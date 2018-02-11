@@ -1,22 +1,22 @@
 <template>
   <div class="Push">
-    <div class="push-login" v-if="!login.loginData.success">
-      <div class="main-image">
-        <img class="logo" src="./../../assets/logo.jpg" alt=""/>
+    <div class="Push-login" v-if="!login.loginData.success">
+      <div class="Push-main-image">
+        <img class="Push-logo" src="./../../assets/logo.jpg" alt=""/>
       </div>
-      <div class="button-login">
-        <mu-raised-button label="去登录" :fullWidth="true" class="demo-raised-button" @click.native="goToLogin" primary/><br/>
+      <div class="Push-button">
+        <mu-raised-button label="去登录" :fullWidth="true" class="Push-demo-raised-button" @click.native="goToLogin" primary/><br/>
       </div>
     </div>
 
-    <div class="push-view" v-if="login.loginData.success">
+    <div class="Push-view" v-if="login.loginData.success">
       <mu-select-field v-model="tab" :labelFocusClass="['label-foucs']" label="选择话题类型">
         <mu-menu-item v-for="item in list" :key="item.index" :value="item.tab" :title="item.title" />
       </mu-select-field><br/>
       <mu-text-field label="输入标题" hintText="标题不得少于10个字符" v-model="title"/><br/>
-      <textarea class="push-content" v-model="content" placeholder="正文不能为空"></textarea>
-      <div class="button-login">
-        <mu-raised-button label="发布" class="demo-raised-button" @click="pushNewTopic" primary fullWidth/>
+      <textarea class="Push-content" v-model="content" placeholder="正文不能为空"></textarea>
+      <div class="Push-button">
+        <mu-raised-button label="发布" class="Push-demo-raised-button" @click="pushNewTopic" primary fullWidth/>
       </div>
       <mu-snackbar v-if="snackbar" message="请检查标题和正文的长度" action="关闭" @actionClick="hideSnackbar" @close="hideSnackbar"/>
     </div>
@@ -94,35 +94,35 @@ export default {
   bottom 56px
 }
 
-.push-login {
+.Push-login {
   width 100%
   height 100%
   padding 10% 0
   box-sizing border-box
 }
 
-.main-image {
+.Push-main-image {
   width 100%
   height 30%
   padding: 20px
   box-sizing border-box
 }
 
-.logo {
-  width 300px
+.Push-logo {
+  width 100%
   height 150px
 }
 
-.button-login {
+.Push-button {
   width 80%
   margin 10% 10%
 }
 
-.demo-raised-button {
+.Push-demo-raised-button {
   font-size 1.1rem
 }
 
-.push-view {
+.Push-view {
   width 100%
   position fixed
   top 56px
@@ -140,7 +140,7 @@ export default {
   text-align left
 }
 
-.push-content {
+.Push-content {
   width 80%
   height 260px
   border 1px solid #000000

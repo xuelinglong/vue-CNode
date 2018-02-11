@@ -1,13 +1,13 @@
 <template>
   <div class="Details">
-    <div class="paperbar">
-      <div class="paper-left">
+    <div class="Details-paperbar">
+      <div class="Details-paper-left">
         <mu-icon-button icon="arrow_back" slot="left" @click="back" />
       </div>
-      <div class="paper-center">
+      <div class="Details-paper-center">
         <span class="title">话题正文</span>
       </div>
-      <div class="paper-right">
+      <div class="Details-paper-right">
         <mu-badge :content="repliesCount" class="demo-icon-badge" slot="right" v-show="REPLIES_COUNT > 0" circle secondary>
           <mu-icon value="chat" @click="gotoComments"></mu-icon>
         </mu-badge>
@@ -16,14 +16,14 @@
       </div>
     </div>
 
-    <div class="content-details">
-      <p class="details-title">{{ info.detailsData.title }}</p>
+    <div class="Details-content">
+      <p class="Details-title">{{ info.detailsData.title }}</p>
       <mu-list-item :title="info.detailsData.author.loginname" disabled>
         <mu-avatar slot="left" :src="info.detailsData.author.avatar_url"/>
-        <div class="details-time" slot="right">刚刚</div>
+        <div class="Details-time" slot="right">刚刚</div>
       </mu-list-item>
 
-      <div class="details-content" v-html="info.detailsData.content"></div>
+      <div class="Details-content-html" v-html="info.detailsData.content"></div>
     </div>
   </div>
 </template>
@@ -114,7 +114,7 @@ export default {
   z-index 3
 }
 
-.paperbar {
+.Details-paperbar {
   width 100%
   height 56px
   display flex
@@ -127,13 +127,13 @@ export default {
   background #7e57c2
 }
 
-.paper-left {
+.Details-paper-left {
   height 100%
   padding-top 3px
   box-sizing border-box
 }
 
-.paper-center {
+.Details-paper-center {
   flex 3
   padding-left 6px
   padding-right 6px
@@ -146,13 +146,13 @@ export default {
   line-height 56px
 }
 
-.paper-right {
+.Details-paper-right {
   height 100%
   padding-top 3px
   box-sizing border-box
 }
 
-.content-details {
+.Details-content {
   width 100%
   position fixed
   top 56px
@@ -163,7 +163,7 @@ export default {
   overflow-y auto
 }
 
-.details-title {
+.Details-title {
   font-size 1.2rem
 }
 

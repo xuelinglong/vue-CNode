@@ -42,26 +42,26 @@ export default {
   background #ffffff
 }
 
-.top-box {
+.MessageItem-top-box {
   width 100%
   min-height 50px
   display flex
 }
 
-.authorimg-box {
+.MessageItem-authorimg-box {
   flex 1
   width 60px
   height 50px
   border-radius 15px
 }
 
-.author-img {
+.MessageItem-author-img {
   width 50px
   height 50px
   border-radius 100%
 }
 
-.authorname-box {
+.MessageItem-authorname-box {
   flex 3
   min-height 50px
   padding 15px 5px 0 10px
@@ -70,7 +70,7 @@ export default {
   color #000000
 }
 
-.time-box {
+.MessageItem-time-box {
   flex 2
   width 60px
   text-align right
@@ -78,20 +78,7 @@ export default {
   font-size 1.1rem
 }
 
-.mu-item-content {
-  text-align left
-}
-
-.message-content {
-  width 100%
-  min-height 50px
-  padding 3px 10px
-  text-align left
-  overflow-y auto
-  box-sizing border-box
-}
-
-.content {
+.MessageItem-content {
   width 100%
   min-height 80px
   padding: 10px

@@ -1,19 +1,19 @@
 <template>
   <div class="Usertopics">
-    <div class="paperbar">
-      <div class="paper-left">
+    <div class="Usertopics-paperbar">
+      <div class="Usertopics-paper-left">
         <mu-icon-button icon="close" @click="back" slot="left"/>
       </div>
-      <div class="paper-center">
+      <div class="Usertopics-paper-center">
         <span class="title">{{ title }} ( {{ length }} )</span>
       </div>
-      <div class="paper-right">
+      <div class="Usertopics-paper-right">
         <mu-icon-button icon="" slot="right"/>
         <mu-icon-button icon="" slot="right"/>
       </div>
     </div>
 
-    <div class="list">
+    <div class="Usertopics-list">
       <user-topics-item v-for="topic in lists" :key="topic.id" :topic="topic"></user-topics-item>
     </div>
   </div>
@@ -85,7 +85,7 @@ export default {
   z-index 3
 }
 
-.paperbar {
+.Usertopics-paperbar {
   width 100%
   height 56px
   display flex
@@ -98,13 +98,13 @@ export default {
   background #7e57c2
 }
 
-.paper-left {
+.Usertopics-paper-left {
   height 100%
   padding-top 3px
   box-sizing border-box
 }
 
-.paper-center {
+.Usertopics-paper-center {
   flex 3
   padding-left 6px
   padding-right 6px
@@ -117,13 +117,13 @@ export default {
   line-height 56px
 }
 
-.paper-right {
+.Usertopics-paper-right {
   height 100%
   padding-top 3px
   box-sizing border-box
 }
 
-.list {
+.Usertopics-list {
   width 100%
   position fixed
   top 56px

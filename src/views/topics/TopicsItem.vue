@@ -1,26 +1,26 @@
 <template>
   <div class="TopicsItem">
     <router-link :to="{name: 'details', params: {id: topic.id}}">
-      <div class="top-box">
-        <div class="author-img">
-          <img class="author" :src="topic.author.avatar_url" />
+      <div class="TopicsItem-top-box">
+        <div class="TopicsItem-author-img">
+          <img class="TopicsItem-author" :src="topic.author.avatar_url" />
         </div>
-        <div class="title-box">
+        <div class="TopicsItem-title-box">
           {{ topic.title }}
         </div>
-        <div class="label-box">
+        <div class="TopicsItem-label-box">
           <span class="label">{{ topic.tab }}</span>
         </div>
       </div>
-      <div class="icon-box">
-        <div class="icon-left">
-          <span class="author-name">{{ topic.author.loginname }}   {{ topic.create_at | filterTime }} </span>
+      <div class="TopicsItem-icon-box">
+        <div class="TopicsItem-icon-left">
+          <span class="TopicsItem-author-name">{{ topic.author.loginname }}   {{ topic.create_at | filterTime }} </span>
         </div>
-        <div class="icon-right">
+        <div class="TopicsItem-icon-right">
           <mu-icon value="visibility" :size="19" color="#D3DCE6"/>
-          <span class="visit-count">{{ topic.visit_count }}</span>
+          <span class="TopicsItem-visit-count">{{ topic.visit_count }}</span>
           <mu-icon value="textsms" :size="19" color="#D3DCE6"/>
-          <span class="reply-count">{{ topic.reply_count }}</span>
+          <span class="TopicsItem-reply-count">{{ topic.reply_count }}</span>
         </div>
       </div>
     </router-link>
@@ -50,26 +50,26 @@ export default {
   background #ffffff
 }
 
-.top-box {
+.TopicsItem-top-box {
   width 100%
   min-height 50px
   display flex
 }
 
-.author-img {
+.TopicsItem-author-img {
   flex 1
   width 60px
   height 50px
   border-radius 15px
 }
 
-.author {
+.TopicsItem-author {
   width 50px
   height 50px
   border-radius 100%
 }
 
-.title-box {
+.TopicsItem-title-box {
   flex 6
   min-height 50px
   padding 0 5px 0 10px
@@ -78,7 +78,7 @@ export default {
   color #000000
 }
 
-.label-box {
+.TopicsItem-label-box {
   flex 1
   width 60px
   height 20px
@@ -86,12 +86,12 @@ export default {
   background pink
 }
 
-.label {
+.TopicsItem-label {
   width 50px
   height 20px
 }
 
-.icon-box {
+.TopicsItem-icon-box {
   width 100%
   height 20px
   display flex
@@ -99,7 +99,7 @@ export default {
   margin-top 10px
 }
 
-.icon-left {
+.TopicsItem-icon-left {
   flex 1.5
   text-align left
   padding-left 3%
@@ -107,7 +107,7 @@ export default {
   box-sizing border-box
 }
 
-.icon-right {
+.TopicsItem-icon-right {
   flex 1
   text-align right
   padding-right 5px
@@ -115,24 +115,14 @@ export default {
   box-sizing border-box
 }
 
-.visit {
-  width 20px
-  height 20px
-}
-
-.visit-count {
+.TopicsItem-visit-count {
   width 80px
   height 20px
   position relative
   bottom 5px
 }
 
-.msg {
-  width 20px
-  height 20px
-}
-
-.reply-count {
+.TopicsItem-reply-count {
   width 80px
   height 20px
   position relative

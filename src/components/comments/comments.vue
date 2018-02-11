@@ -1,27 +1,27 @@
 <template>
   <div class="Comments">
-    <div class="paperbar">
-      <div class="paper-left">
+    <div class="Comments-paperbar">
+      <div class="Comments-paper-left">
         <mu-icon-button icon="arrow_back" slot="left" @click="back" />
       </div>
-      <div class="paper-center">
+      <div class="Comments-paper-center">
         <span class="title">{{ REPLIES_COUNT }}条评论</span>
       </div>
-      <div class="paper-right">
+      <div class="Comments-paper-right">
         <mu-icon-button icon="mode_edit" slot="right" @click="showReplies" />
       </div>
     </div>
 
-    <div class="commentslist">
+    <div class="Comments-list">
       <comments-list-item v-for="comment in info.detailsData.replies" :key="comment.id" :comment="comment"></comments-list-item>
     </div>
 
-    <div class="replies-edit" v-show="info.showreplies">
-      <div class="reply-content-box">
-        <textarea class="input" v-model="content"></textarea>
-        <div class="replies-button">
-          <button class="replies-push" @click="pushreply">发表</button>
-          <button class="replies-cancel" @click="cancel">取消</button>
+    <div class="Comments-replies-edit" v-show="info.showreplies">
+      <div class="Comments-reply-content-box">
+        <textarea class="Comments-input" v-model="content"></textarea>
+        <div class="Comments-replies-button">
+          <button class="Comments-replies-push" @click="pushreply">发表</button>
+          <button class="Comments-replies-cancel" @click="cancel">取消</button>
         </div>
         <mu-toast v-if="toast" message="评论正文不能为空" @close="hideToast"/>
       </div>
@@ -111,7 +111,7 @@ export default {
   z-index 3
 }
 
-.paperbar {
+.Comments-paperbar {
   width 100%
   height 56px
   display flex
@@ -124,13 +124,13 @@ export default {
   background #7e57c2
 }
 
-.paper-left {
+.Comments-paper-left {
   height 100%
   padding-top 3px
   box-sizing border-box
 }
 
-.paper-center {
+.Comments-paper-center {
   flex 3
   padding-left 6px
   padding-right 6px
@@ -143,13 +143,13 @@ export default {
   line-height 56px
 }
 
-.paper-right {
+.Comments-paper-right {
   height 100%
   padding-top 3px
   box-sizing border-box
 }
 
-.commentslist {
+.Comments-list {
   width 100%
   position fixed
   top 56px
@@ -158,7 +158,7 @@ export default {
   overflow-y auto
 }
 
-.replies-edit {
+.Comments-replies-edit {
   width 100%
   position fixed
   top 0
@@ -169,7 +169,7 @@ export default {
   z-index 4
 }
 
-.reply-content-box {
+.Comments-reply-content-box {
   width 80%
   min-height 350px
   position fixed
@@ -181,13 +181,13 @@ export default {
   background #ffffff
 }
 
-.input {
+.Comments-input {
   width 100%
   min-height 280px
   border 1px solid #000000
 }
 
-.replies-button {
+.Comments-replies-button {
   width 100%
   height 70px
   display flex
@@ -196,12 +196,12 @@ export default {
   box-sizing border-box
 }
 
-.replies-push {
+.Comments-replies-push {
   flex 1
   color #7e57c2
 }
 
-.replies-cancel {
+.Comments-replies-cancel {
   flex 1
 }
 

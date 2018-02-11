@@ -1,26 +1,26 @@
 <template>
   <div class="CommentsItem">
-    <div class="top-box">
-      <div class="authorimg-box">
-        <img class="author-img" :src="comment.author.avatar_url" />
+    <div class="CommentsItem-top-box">
+      <div class="CommentsItem-authorimg-box">
+        <img class="CommentsItem-author-img" :src="comment.author.avatar_url" />
       </div>
-      <div class="authorname-box">
+      <div class="CommentsItem-authorname-box">
         {{ comment.author.loginname }}
       </div>
-      <div class="time-box">
+      <div class="CommentsItem-time-box">
         {{ comment.create_at | filterTime }}
       </div>
     </div>
-    <div class="content" v-html="comment.content"></div>
-    <div class="icon-bar">
-      <div class="left">
+    <div class="CommentsItem-content" v-html="comment.content"></div>
+    <div class="CommentsItem-icon-bar">
+      <div class="CommentsItem-left">
         <mu-icon-button icon="comment" @click="replyToComment" :size="14" style="color: #aaaaaa"></mu-icon-button>
-        <span class="text">回复</span>
+        <span class="CommentsItem-text">回复</span>
       </div>
-      <div class="right">
+      <div class="CommentsItem-right">
         <mu-icon-button v-show="!comment.is_uped" icon="thumb_up" :size="14" @click="ups" style="color: #aaaaaa"></mu-icon-button>
         <mu-icon-button v-show="comment.is_uped" icon="thumb_up" :size="14" @click="ups" style="color: #ffd600"></mu-icon-button>
-        <span class="text">{{ comment.ups.length }}</span>
+        <span class="CommentsItem-text">{{ comment.ups.length }}</span>
       </div>
     </div>
   </div>
@@ -93,26 +93,26 @@ export default {
   background #ffffff
 }
 
-.top-box {
+.CommentsItem-top-box {
   width 100%
   min-height 50px
   display flex
 }
 
-.authorimg-box {
+.CommentsItem-authorimg-box {
   flex 1
   width 60px
   height 50px
   border-radius 15px
 }
 
-.author-img {
+.CommentsItem-author-img {
   width 50px
   height 50px
   border-radius 100%
 }
 
-.authorname-box {
+.CommentsItem-authorname-box {
   flex 3
   min-height 50px
   padding 15px 5px 0 10px
@@ -121,7 +121,7 @@ export default {
   color #000000
 }
 
-.time-box {
+.CommentsItem-time-box {
   flex 2
   width 60px
   text-align right
@@ -129,7 +129,7 @@ export default {
   font-size 1.1rem
 }
 
-.content {
+.CommentsItem-content {
   width 100%
   min-height 80px
   padding: 10px
@@ -137,24 +137,24 @@ export default {
   box-sizing border-box
 }
 
-.icon-bar {
+.CommentsItem-icon-bar {
   width 100%
   height 50px
   display flex
   // text-align right
 }
 
-.left {
+.CommentsItem-left {
   flex 1
   text-align left
 }
 
-.right {
+.CommentsItem-right {
   flex 1
   text-align right
 }
 
-.text {
+.CommentsItem-text {
   width 48px
   height 48px
   padding 12px 0

@@ -1,13 +1,13 @@
 <template>
   <div class="UserTopicsItem">
     <router-link :to="{name: 'details', params: {id: topic.id}}">
-      <div class="image-author">
-        <img class="author" :src="topic.author.avatar_url" />
+      <div class="UserTopicsItem-image-author">
+        <img class="UserTopicsItem-image" :src="topic.author.avatar_url" />
       </div>
-      <div class="name-author">
+      <div class="UserTopicsItem-name-author">
         {{ topic.author.loginname}}
       </div>
-      <div class="title-topic">
+      <div class="UserTopicsItem-title-topic">
         {{ topic.title}}
       </div>
     </router-link>
@@ -35,14 +35,20 @@ export default {
   background #ffffff
 }
 
-.image-author {
+.UserTopicsItem-image-author {
   width 50px
   height 50px
   float left
   border-radius: 100%
 }
 
-.name-author {
+.UserTopicsItem-image {
+  width 50px
+  height 50px
+  border-radius: 100%
+}
+
+.UserTopicsItem-name-author {
   width 80%
   height 25px
   float right
@@ -50,7 +56,7 @@ export default {
   text-align left
 }
 
-.title-topic {
+.UserTopicsItem-title-topic {
   width 80%
   min-height 25px
   float right

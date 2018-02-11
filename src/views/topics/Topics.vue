@@ -1,6 +1,6 @@
 <template>
   <div class="Topics">
-    <div class="tab">
+    <div class="Topics-tab">
       <mu-tabs :value="activeTab" @change="handleTabChange">
         <mu-tab value="all" title="全部"/>
         <mu-tab value="good" title="精华"/>
@@ -11,16 +11,16 @@
       </mu-tabs>
     </div>
 
-    <div class="contentlist" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="30">
+    <div class="Topics-contentlist" v-infinite-scroll="loadMore" infinite-scroll-disabled="busy" infinite-scroll-distance="30">
       <mu-refresh-control :refreshing="refreshing" :trigger="trigger" @refresh="loadTop"/>
       <topics-item v-for="topic in topics.topicsdata" :key="topic.id" :topic="topic"></topics-item>
       <!-- <mu-infinite-scroll :scroller="scroller" :loading="loading" @load="loadMore" loadingText="正在加载..."/> -->
-      <p class="loading" v-show="this.busy">
+      <p class="Topics-loading" v-show="this.busy">
         <mu-circular-progress :size="25"/>
         正在加载...
       </p>
-      <p class="isError" v-show="this.isError">加载失败，请重试！！！</p>
-      <p class="nomoredata" v-show="this.nomoredata">到底啦～</p>
+      <p class="Topics-isError" v-show="this.isError">加载失败，请重试！！！</p>
+      <p class="Topics-nomoredata" v-show="this.nomoredata">到底啦～</p>
     </div>
 
   </div>
@@ -138,7 +138,7 @@ export default {
   background #f0f0f0
 }
 
-.tab {
+.Topics-tab {
   width 100%
   z-index 9
 }
@@ -148,7 +148,7 @@ export default {
   padding 0 2px
 }
 
-.contentlist {
+.Topics-contentlist {
   width 100%
   position fixed
   top 104px
@@ -157,21 +157,21 @@ export default {
   overflow-y auto
 }
 
-.loading {
+.Topics-loading {
   width 100%
   height 25px
   font-size 1.1rem
   box-sizing border-box
 }
 
-.nomoredata {
+.Topics-nomoredata {
   width 100%
   height 25px
   font-size 1.2rem
   box-sizing border-box
 }
 
-.isError {
+.Topics-isError {
   width 100%
   height 25px
   font-size 1.2rem
